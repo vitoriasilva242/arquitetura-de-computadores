@@ -267,62 +267,212 @@ details{border-radius:4px}
 input[type=text],input[type=number],select,textarea{border-radius:4px;border-width:1px}
 b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
 </style>
+<style id="cores">
+/* ===== Cores por tópico + caixas de teoria + celular ===== */
+:root{--acc:#2b59c3}
+section.topic{--acc-soft:color-mix(in srgb,var(--acc) 9%,#fff);--acc-mid:color-mix(in srgb,var(--acc) 26%,#fff);--acc-dark:color-mix(in srgb,var(--acc) 80%,#000)}
+section.topic h2{color:var(--acc-dark)}
+section.topic h2::after{content:"";display:block;width:84px;height:6px;border-radius:3px;background:var(--acc);margin-top:8px}
+.kicker{display:inline-block!important;background:var(--acc)!important;color:#fff!important;padding:3px 12px!important;border-radius:999px!important;font-size:.85rem!important;margin-bottom:8px!important}
+section.topic h3{display:block;border:none;background:var(--acc-soft);border-left:7px solid var(--acc);color:var(--acc-dark);padding:9px 14px;border-radius:0 10px 10px 0;margin-top:2.2rem}
+/* marca-texto nas palavras importantes */
+.theory b,.card b,.walk b,.oneline b,.story b,.decore b,.trap b,details b,.illus .cap b,.bench .out b,.howto b{background:linear-gradient(transparent 52%,var(--acc-mid) 52%);color:var(--acc-dark);padding:0 2px;border-radius:2px;font-weight:700}
+.howto b[style],.out b[style]{background:none!important}
+.decore b{--acc-mid:#bfe8cf;--acc-dark:#1d6b41}
+.trap b{--acc-mid:#f8c9d3;--acc-dark:#9c2238}
+.story b{--acc-mid:#ffe07a;--acc-dark:#6b4e00}
+.oneline > b:first-child,.walk ol>li::before{background:none}
+/* caixa de teoria */
+.theory{background:#fff;border:1px solid var(--acc-mid);border-left:7px solid var(--acc);border-radius:0 14px 14px 0;padding:14px 20px 12px;margin:18px 0;box-shadow:0 3px 14px color-mix(in srgb,var(--acc) 10%,transparent)}
+.theory::before{content:"Teoria";display:block;font-family:var(--f-hand);font-size:1.45rem;font-weight:700;color:var(--acc);line-height:1;margin-bottom:4px}
+.theory p.prose,.theory p{max-width:none;margin:.45rem 0}
+.theory h4{color:var(--acc-dark);margin:.8rem 0 .2rem}
+/* "a ideia" */
+.oneline{background:var(--acc-soft)!important;border:2px solid var(--acc)!important;border-radius:14px!important;padding:14px 18px!important}
+.oneline > b:first-child{display:inline-block;background:var(--acc)!important;color:#fff!important;padding:1px 10px;border-radius:999px;margin-right:4px;font-family:var(--f-display)}
+/* passo a passo */
+.walk{background:#fff!important;border:2px solid var(--acc-mid)!important;border-radius:14px!important;padding:14px 18px!important;margin:18px 0}
+.walk > .lbl{color:var(--acc-dark)!important;font-family:var(--f-hand)!important;font-size:1.45rem!important}
+.walk ol>li::before{background:var(--acc)!important;border:none!important;color:#fff!important}
+/* pra prova / cuidado */
+.decore{background:#effaf3!important;border-radius:14px!important}
+.trap{background:#fff3f5!important;border-radius:14px!important;border-width:2.5px!important}
+.story{border-radius:6px!important}
+/* cartões */
+.card{border:1px solid var(--acc-mid)!important;border-top:6px solid var(--acc)!important;border-radius:12px!important;background:#fff}
+.card h4{color:var(--acc-dark)!important}
+.card.c-blue{--acc:#2b59c3}.card.c-rose{--acc:#c2364e}.card.c-teal{--acc:#0e8a8c}.card.c-violet{--acc:#6c4bc4}.card.c-amber{--acc:#c98a00}.card.c-green{--acc:#2c8a57}
+.card[class*=" c-"]{--acc-soft:color-mix(in srgb,var(--acc) 9%,#fff);--acc-mid:color-mix(in srgb,var(--acc) 26%,#fff);--acc-dark:color-mix(in srgb,var(--acc) 80%,#000)}
+/* bancadas, tabelas, exercícios */
+.bench{border:2px solid var(--acc-mid)!important;border-radius:14px!important;overflow:hidden}
+.bench > header{background:var(--acc-soft)!important;border-bottom:2px solid var(--acc-mid)!important}
+.bench > header .nm{color:var(--acc-dark)!important}
+button.pri{background:var(--acc)!important;border-color:var(--acc)!important}
+button.chip.on{background:var(--acc-dark)!important;border-color:var(--acc-dark)!important}
+.tw{background:#fff;border:1px solid var(--acc-mid);border-radius:12px;padding:6px}
+th{background:var(--acc-soft)!important;color:var(--acc-dark)}
+details{border-left:5px solid var(--acc)!important;border-radius:0 10px 10px 0!important}
+details[open] summary{color:var(--acc-dark)!important}
+nav.side a{border-left:3px solid transparent}
+nav.side a span.t{color:var(--acc,#2b59c3)!important}
+nav.side a.on{border-left:4px solid var(--acc,#2b59c3)!important;color:var(--acc,#2b59c3)!important}
+.flash button .tp{color:var(--acc)}
+/* ===== celular ===== */
+@media (max-width:860px){
+  .wrap{grid-template-columns:minmax(0,1fr)!important}
+  main{min-width:0;max-width:100vw}
+  nav.side{min-width:0;max-width:100vw}
+  nav.side .grp{display:none}
+  section.topic{scroll-margin-top:58px}
+  nav.side ol > li{flex:0 0 auto}
+  nav.side a{display:block!important;padding:7px 10px}
+  nav.side a.on{border-left:none!important;border-bottom:3px solid var(--acc,#2b59c3)!important}
+}
+@media (max-width:700px){
+  body{font-size:16px!important;line-height:1.58}
+  main{padding:14px 12px 90px!important}
+  h2{font-size:1.55rem!important}
+  section.topic h3{font-size:1.12rem;padding:8px 10px;margin-top:1.8rem}
+  section.topic{padding-top:26px;margin-top:22px}
+  .theory,.walk,.oneline,.story,.decore,.trap{padding:12px 13px!important}
+  .theory{padding-left:14px!important;border-left-width:5px}
+  .walk ol>li{padding-left:38px}
+  .card{padding:12px 13px}
+  .grid2,.grid3{grid-template-columns:1fr!important}
+  .illus,.svgwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .grid2>*,.grid3>*{min-width:0}
+  .illus .cap{text-align:left}
+  .scrollhint::after{content:"← arraste para os lados →";display:block;text-align:center;font-size:.75rem;color:var(--muted);font-style:italic}
+  .card table,.theory table,details table,.out table{display:block;overflow-x:auto;max-width:100%}
+  .tw{padding:2px}
+  .bench .in{padding:12px}
+  .row{gap:6px}
+  button{font-size:.92rem}
+  input[type=text],input[type=number],select{max-width:100%}
+  label.f{max-width:100%;min-width:0;flex:1 1 100%!important}
+  label.f input,label.f select{width:100%;min-width:0}
+  .flash{grid-template-columns:1fr 1fr}
+  .flash button{min-height:100px;font-size:.88rem}
+  .legend{grid-template-columns:1fr}
+  pre{white-space:pre-wrap;word-break:break-word}
+}
+@media (max-width:420px){.flash{grid-template-columns:1fr}}
+</style>
+<style id="inicio-css">
+.hero2{display:grid;grid-template-columns:1fr 230px;gap:24px;align-items:center;background:linear-gradient(135deg,#2b59c3 0%,#6c4bc4 55%,#c2364e 100%);color:#fff;border-radius:22px;padding:34px 36px;box-shadow:0 14px 40px #2b59c333}
+.hero2 .hk{display:inline-block;background:#ffffff26;border:1px solid #ffffff55;border-radius:999px;padding:3px 12px;font-size:.82rem;font-weight:700;letter-spacing:.02em}
+.hero2 h1{color:#fff!important;font-size:clamp(1.9rem,4vw,2.7rem);margin:14px 0 10px;max-width:18ch}
+.hero2 p{font-size:1.06rem;max-width:56ch;margin:0;color:#f1edff}
+.hbtn{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.hbtn a{text-decoration:none;font-weight:700;padding:10px 18px;border-radius:999px}
+.hbtn .b1{background:#fff;color:#2b59c3}
+.hbtn .b2{border:2px solid #fff;color:#fff}
+.hstat{display:flex;flex-wrap:wrap;gap:22px;margin-top:22px}
+.hstat div{display:flex;flex-direction:column;line-height:1.1}
+.hstat b{font-family:var(--f-display);font-size:1.7rem}
+.hstat span{font-size:.82rem;color:#e6e0ff}
+.hart{width:100%;height:auto}
+.maptip{color:var(--ink);margin:.2rem 0 1rem;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.maptip b{color:var(--acc)}
+.mapgrp{margin:14px 0}
+.mg-h{font-family:var(--f-display);font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
+.mapgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.mt{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);background:#fff;border:1px solid color-mix(in srgb,var(--acc) 25%,#fff);border-left:5px solid var(--acc);border-radius:12px;padding:10px 12px;transition:transform .15s,box-shadow .15s}
+.mt:hover{transform:translateY(-2px);box-shadow:0 6px 16px color-mix(in srgb,var(--acc) 18%,transparent)}
+.mt .mn{flex:0 0 34px;height:34px;border-radius:50%;background:var(--acc);color:#fff;font-family:var(--f-display);font-weight:700;display:flex;align-items:center;justify-content:center}
+.mt .mx{font-weight:700;font-size:.95rem;line-height:1.25}
+.legend2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.legend2 > div{margin:0!important;font-size:.97rem}
+.legend2 .walk ol{margin-top:0}
+@media (max-width:700px){
+  .hero2{grid-template-columns:1fr;padding:22px 18px;border-radius:16px}
+  .hart{display:none}
+  .hstat{gap:12px;flex-wrap:nowrap}.hstat div{flex:1}.hstat b{font-size:1.4rem}.hstat span{font-size:.75rem}
+  .mapgrid{grid-template-columns:1fr 1fr}
+  .mt{padding:8px;gap:8px}.mt .mn{flex-basis:28px;height:28px;font-size:.85rem}.mt .mx{font-size:.85rem}
+  .legend2{grid-template-columns:1fr}
+}
+</style>
+<style id="resumo-css">
+.formulas{background:linear-gradient(135deg,#1f2a4d,#3a2a6b);color:#fff;border-radius:16px;padding:16px 18px;margin:18px 0 22px}
+.f-h{font-family:var(--f-hand);font-size:1.6rem;font-weight:700;color:#ffd34d;line-height:1;margin-bottom:10px}
+.f-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.f-grid div{background:#ffffff14;border:1px solid #ffffff2a;border-radius:10px;padding:8px 12px;display:flex;flex-direction:column;gap:4px}
+.f-grid span{font-size:.8rem;color:#d8d2f5}
+.f-grid code{background:none;color:#fff;font-size:1.02rem;font-weight:700;padding:0}
+#revisao .mg-h{margin:22px 0 10px}
+.rs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px}
+.rs{--acc-mid:color-mix(in srgb,var(--acc) 26%,#fff);--acc-dark:color-mix(in srgb,var(--acc) 80%,#000);background:#fff;border:1px solid var(--acc-mid);border-top:6px solid var(--acc);border-radius:12px;padding:12px 14px}
+.rs-h{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--f-display);font-weight:700;font-size:1.05rem;color:var(--acc-dark);margin-bottom:6px}
+.rs-h .mn{flex:0 0 28px;height:28px;border-radius:50%;background:var(--acc);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.85rem}
+.rs ul{margin:0;padding-left:1.1rem;font-size:.93rem;line-height:1.5}
+.rs li{margin:.3rem 0}
+.rs li::marker{color:var(--acc)}
+.rs b{background:linear-gradient(transparent 52%,var(--acc-mid) 52%);color:var(--acc-dark);padding:0 2px}
+@media (max-width:700px){.rs-grid{grid-template-columns:1fr}.f-grid{grid-template-columns:1fr 1fr}.f-grid code{font-size:.9rem}}
+@media (max-width:330px){.f-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <div class="wrap">
 <nav class="side" aria-label="Tópicos">
   <div class="brand">Arquitetura de Computadores</div>
   <div class="sub">Apostila visual para a prova · 1º período</div>
-  <ol id="navlist"><li class="grp">Começo</li><li><a href="#inicio"><span class="t">·</span>Como usar esta página</a></li><li><a href="#tour"><span class="t">·</span>Por dentro do computador</a></li>
-<li class="grp">Prova 1</li><li><a href="#intro"><span class="t">1</span>Introdução e história</a></li><li><a href="#sistema"><span class="t">2</span>Sistemas: memória e barramentos</a></li><li><a href="#bases"><span class="t">3</span>Bases numéricas</a></li><li><a href="#aritmetica"><span class="t">4</span>Contas em binário</a></li><li><a href="#sinal"><span class="t">4</span>Números negativos e overflow</a></li>
-<li class="grp">Prova 2</li><li><a href="#cache"><span class="t">5</span>Memória cache</a></li><li><a href="#programa"><span class="t">8</span>Do programa ao executável</a></li><li><a href="#instrucoes"><span class="t">8</span>Instruções e assembly MIPS</a></li><li><a href="#componentes"><span class="t">9</span>Peças do processador</a></li><li><a href="#ucp-livro"><span class="t">9</span>O processador do livro (simulador)</a></li><li><a href="#formatos"><span class="t">9</span>Formatos R, I e J</a></li><li><a href="#datapath"><span class="t">10–12</span>Caminho de dados</a></li><li><a href="#controle"><span class="t">12</span>Unidade de controle</a></li><li><a href="#registradores"><span class="t">13</span>Registradores e ciclo</a></li><li><a href="#pipeline"><span class="t">13</span>Pipeline</a></li><li><a href="#hazards"><span class="t">13</span>Hazards e desvios</a></li>
-<li class="grp">Treino</li><li><a href="#listas"><span class="t">✎</span>Listas e livro resolvidos</a></li><li><a href="#revisao"><span class="t">✎</span>Resumo e flashcards</a></li><li><a href="#quiz"><span class="t">✎</span>Simulado</a></li></ol>
+  <ol id="navlist"><li class="grp">Começo</li><li><a href="#inicio" style="--acc:#2b59c3"><span class="t">·</span>Como usar esta página</a></li><li><a href="#tour" style="--acc:#6c4bc4"><span class="t">·</span>Por dentro do computador</a></li>
+<li class="grp">Prova 1</li><li><a href="#intro" style="--acc:#2b59c3"><span class="t">1</span>Introdução e história</a></li><li><a href="#sistema" style="--acc:#0e8a8c"><span class="t">2</span>Sistemas: memória e barramentos</a></li><li><a href="#bases" style="--acc:#6c4bc4"><span class="t">3</span>Bases numéricas</a></li><li><a href="#aritmetica" style="--acc:#d9531e"><span class="t">4</span>Contas em binário</a></li><li><a href="#sinal" style="--acc:#c2364e"><span class="t">5</span>Números negativos e overflow</a></li>
+<li class="grp">Prova 2</li><li><a href="#cache" style="--acc:#2c8a57"><span class="t">6</span>Memória cache</a></li><li><a href="#programa" style="--acc:#b0631a"><span class="t">7</span>Do programa ao executável</a></li><li><a href="#instrucoes" style="--acc:#2b59c3"><span class="t">8</span>Instruções e assembly MIPS</a></li><li><a href="#componentes" style="--acc:#0e8a8c"><span class="t">9</span>Peças do processador</a></li><li><a href="#ucp-livro" style="--acc:#6c4bc4"><span class="t">10</span>O processador do livro (simulador)</a></li><li><a href="#formatos" style="--acc:#d9531e"><span class="t">11</span>Formatos R, I e J</a></li><li><a href="#datapath" style="--acc:#c2364e"><span class="t">12</span>Caminho de dados</a></li><li><a href="#controle" style="--acc:#2c8a57"><span class="t">13</span>Unidade de controle</a></li><li><a href="#registradores" style="--acc:#a8790a"><span class="t">14</span>Registradores e ciclo</a></li><li><a href="#pipeline" style="--acc:#2b59c3"><span class="t">15</span>Pipeline</a></li><li><a href="#hazards" style="--acc:#c2364e"><span class="t">16</span>Hazards e desvios</a></li><li><a href="#es" style="--acc:#0e8a8c"><span class="t">17</span>Entrada e saída (E/S)</a></li>
+<li class="grp">Treino</li><li><a href="#listas" style="--acc:#6c4bc4"><span class="t">✎</span>Listas e livro resolvidos</a></li><li><a href="#revisao" style="--acc:#2c8a57"><span class="t">✎</span>Resumo e flashcards</a></li><li><a href="#quiz" style="--acc:#d9531e"><span class="t">✎</span>Simulado</a></li></ol>
 </nav>
 <main>
 
 <!-- ================= INÍCIO ================= -->
-<section class="topic" id="inicio">
-  <div class="hero">
-    <span class="kicker">Fundamentos de Arquiteturas de Computadores</span>
-    <h1>Arquitetura de Computadores, explicada do zero</h1>
-    <p class="lead">Esta página é uma <b>apostila</b> da matéria inteira, feita a partir dos seus slides. Você pode ler de cima para baixo, como um livro, ou clicar num tópico no menu da esquerda. Nada aqui pressupõe que você já saiba o assunto: cada ideia começa com uma comparação do dia a dia, depois vem a explicação com calma, um exemplo resolvido e, no fim, o resumo para decorar.</p>
-  </div>
-
-  <div class="illus">
-    <svg viewBox="0 0 960 230" role="img" aria-label="A história da matéria em 6 etapas">
-      <path d="M 70 120 C 200 30, 260 210, 390 120 S 600 30, 720 120 S 860 200, 900 120" fill="none" stroke="#e7d9f3" stroke-width="10" stroke-linecap="round"/>
-      <g font-family="Fredoka" text-anchor="middle">
-        <circle cx="70" cy="120" r="44" fill="#fff3dd" stroke="#e99a2b" stroke-width="3"/><text x="70" y="113" font-size="18" fill="#b26d0d" font-weight="600">0 1</text><text x="70" y="136" font-size="13" fill="#b26d0d">bits</text>
-        <circle cx="236" cy="118" r="44" fill="#f0ebfd" stroke="#7c5cd6" stroke-width="3"/><text x="236" y="112" font-size="16" fill="#7c5cd6" font-weight="600">1011₂</text><text x="236" y="134" font-size="13" fill="#7c5cd6">números</text>
-        <circle cx="390" cy="120" r="44" fill="#fde9f0" stroke="#d9638e" stroke-width="3"/><text x="390" y="115" font-size="22" fill="#d9638e" font-weight="700">+ −</text><text x="390" y="136" font-size="13" fill="#d9638e">contas</text>
-        <circle cx="555" cy="72" r="44" fill="#e5f2fb" stroke="#3489c9" stroke-width="3"/><text x="555" y="68" font-size="15" fill="#3489c9" font-weight="600">add</text><text x="555" y="88" font-size="13" fill="#3489c9">instruções</text>
-        <circle cx="720" cy="120" r="44" fill="#e1f6ef" stroke="#25927a" stroke-width="3"/><rect x="700" y="98" width="40" height="34" rx="5" fill="#fff" stroke="#25927a" stroke-width="2"/><text x="720" y="120" font-size="12" fill="#25927a" font-weight="600">CPU</text><text x="720" y="186" font-size="13" fill="#25927a">processador</text>
-        <circle cx="880" cy="140" r="44" fill="#fde9f0" stroke="#d9638e" stroke-width="3"/><text x="880" y="136" font-size="13" fill="#d9638e" font-weight="600">⇉ ⇉ ⇉</text><text x="880" y="156" font-size="13" fill="#d9638e">pipeline</text>
+<section class="topic" id="inicio" style="--acc:#2b59c3">
+  <div class="hero2">
+    <div class="htxt">
+      <span class="hk">Fundamentos de Arquitetura de Computadores · 1º período</span>
+      <h1>Arquitetura de Computadores, explicada do zero</h1>
+      <p>A matéria inteira numa apostila só, feita a partir dos slides e dos livros: comparações do dia a dia, desenhos, testes para mexer e o resumo do que cai na prova.</p>
+      <div class="hbtn"><a class="b1" href="#intro">Começar pelo Tópico 1 →</a><a class="b2" href="#quiz">Fazer o simulado</a></div>
+      <div class="hstat"><div><b>17</b><span>tópicos</span></div><div><b>31</b><span>testes interativos</span></div><div><b>47</b><span>questões de simulado</span></div></div>
+    </div>
+    <svg class="hart" viewBox="0 0 260 260" aria-hidden="true">
+      <g stroke-width="4" stroke-linecap="round">
+        <path d="M130 20v40M90 20v40M170 20v40M130 200v40M90 200v40M170 200v40M20 130h40M20 90h40M20 170h40M200 130h40M200 90h40M200 170h40" stroke="#ffffff88"/>
       </g>
-      <g font-size="13" fill="#6c6480" text-anchor="middle">
-        <text x="70" y="190">T3</text><text x="236" y="190">T3</text><text x="390" y="190">T4</text><text x="555" y="140">T8</text><text x="720" y="204">T9–T12</text><text x="880" y="210">T13</text>
-      </g>
+      <rect x="60" y="60" width="140" height="140" rx="18" fill="#ffffff22" stroke="#fff" stroke-width="4"/>
+      <rect x="88" y="88" width="84" height="84" rx="10" fill="#fff"/>
+      <text x="130" y="128" text-anchor="middle" font-family="Bitter" font-weight="700" font-size="22" fill="#2b59c3">UCP</text>
+      <text x="130" y="152" text-anchor="middle" font-family="JetBrains Mono" font-size="13" fill="#c2364e">0101 1011</text>
+      <circle cx="90" cy="20" r="7" fill="#ffd34d"/><circle cx="240" cy="130" r="7" fill="#7ee0b0"/><circle cx="170" cy="240" r="7" fill="#ff9db3"/><circle cx="20" cy="90" r="7" fill="#b9a6ff"/>
     </svg>
-    <p class="cap">A matéria é uma história só: o computador só entende <b>0 e 1</b> → com eles escrevemos <b>números</b> → com números fazemos <b>contas</b> → as contas viram <b>instruções</b> → o <b>processador</b> executa instruções → o <b>pipeline</b> faz isso mais rápido.</p>
   </div>
 
-  <h3>O que você vai encontrar em cada tópico</h3>
-  <div class="legend">
-    <div style="background:linear-gradient(120deg,var(--data-soft),var(--vio-soft))"><b style="color:var(--data)">A ideia</b><br>A ideia central. Se você lembrar só disso, consegue reconstruir o resto.</div>
-    <div style="background:var(--sun-soft)"><b style="color:#b26d0d">Pensa assim</b><br>Uma comparação com algo do dia a dia, para a ideia fazer sentido antes da teoria.</div>
-    <div style="background:#fff;border:2px solid var(--data-soft)"><b style="color:var(--data)">Passo a passo</b><br>A explicação com calma, numerada, com exemplo resolvido.</div>
-    <div style="background:var(--data-soft)"><b style="color:var(--data)">Teste aqui</b><br>Uma parte interativa: você digita valores ou clica em botões e vê o resultado mudar na hora.</div>
-    <div style="background:var(--ok-soft)"><b style="color:var(--ok)">Pra prova</b><br>O que costuma cair e vale memorizar.</div>
-    <div style="background:var(--hot-soft)"><b style="color:var(--hot)">Cuidado na prova</b><br>Erros comuns em prova.</div>
+  <h3>O mapa da matéria</h3>
+  <p class="maptip">Clique num tópico para ir direto a ele. A ordem segue a história: <b>0 e 1</b> → <b>números</b> → <b>contas</b> → <b>memória</b> → <b>instruções</b> → <b>processador</b> → <b>pipeline</b> → <b>entrada e saída</b>.</p>
+  <div class="mapgrp"><div class="mg-h">Prova 1</div><div class="mapgrid"><a class="mt" href="#intro" style="--acc:#2b59c3"><span class="mn">1</span><span class="mx">Introdução e história</span></a><a class="mt" href="#sistema" style="--acc:#0e8a8c"><span class="mn">2</span><span class="mx">Memória e barramentos</span></a><a class="mt" href="#bases" style="--acc:#6c4bc4"><span class="mn">3</span><span class="mx">Bases numéricas</span></a><a class="mt" href="#aritmetica" style="--acc:#d9531e"><span class="mn">4</span><span class="mx">Contas em binário</span></a><a class="mt" href="#sinal" style="--acc:#c2364e"><span class="mn">5</span><span class="mx">Negativos e overflow</span></a></div></div>
+  <div class="mapgrp"><div class="mg-h">Prova 2</div><div class="mapgrid"><a class="mt" href="#cache" style="--acc:#2c8a57"><span class="mn">6</span><span class="mx">Memória cache</span></a><a class="mt" href="#programa" style="--acc:#b0631a"><span class="mn">7</span><span class="mx">Do programa ao executável</span></a><a class="mt" href="#instrucoes" style="--acc:#2b59c3"><span class="mn">8</span><span class="mx">Instruções MIPS</span></a><a class="mt" href="#componentes" style="--acc:#0e8a8c"><span class="mn">9</span><span class="mx">Peças do processador</span></a><a class="mt" href="#ucp-livro" style="--acc:#6c4bc4"><span class="mn">10</span><span class="mx">O processador do livro</span></a><a class="mt" href="#formatos" style="--acc:#d9531e"><span class="mn">11</span><span class="mx">Formatos R, I e J</span></a><a class="mt" href="#datapath" style="--acc:#c2364e"><span class="mn">12</span><span class="mx">Caminho de dados</span></a><a class="mt" href="#controle" style="--acc:#2c8a57"><span class="mn">13</span><span class="mx">Unidade de controle</span></a><a class="mt" href="#registradores" style="--acc:#a8790a"><span class="mn">14</span><span class="mx">Registradores e ciclo</span></a><a class="mt" href="#pipeline" style="--acc:#2b59c3"><span class="mn">15</span><span class="mx">Pipeline</span></a><a class="mt" href="#hazards" style="--acc:#c2364e"><span class="mn">16</span><span class="mx">Hazards e desvios</span></a><a class="mt" href="#es" style="--acc:#0e8a8c"><span class="mn">17</span><span class="mx">Entrada e saída</span></a></div></div>
+  <div class="mapgrp"><div class="mg-h">Treino</div><div class="mapgrid">
+    <a class="mt" href="#listas" style="--acc:#6c4bc4"><span class="mn">✎</span><span class="mx">Listas resolvidas</span></a><a class="mt" href="#revisao" style="--acc:#2c8a57"><span class="mn">✎</span><span class="mx">Resumo e flashcards</span></a><a class="mt" href="#quiz" style="--acc:#d9531e"><span class="mn">✎</span><span class="mx">Simulado</span></a></div></div>
+
+  <h3>Como cada tópico é organizado</h3>
+  <div class="legend2">
+    <div class="oneline"><b>A ideia:</b> o centro do assunto. Se você lembrar só disso, consegue reconstruir o resto.</div>
+    <div class="story"><div class="lbl">Pensa assim</div>Uma comparação com algo do dia a dia, para a ideia fazer sentido antes da teoria.</div>
+    <div class="theory">A explicação completa, com as <b>palavras importantes</b> marcadas como marca-texto.</div>
+    <div class="walk"><div class="lbl">Passo a passo</div><ol><li>A explicação numerada, com exemplo resolvido.</li></ol></div>
+    <div class="decore"><div class="lbl">Pra prova</div>O que costuma cair e vale <b>memorizar</b>.</div>
+    <div class="trap"><div class="lbl">Cuidado na prova</div>Os <b>erros comuns</b> e as pegadinhas.</div>
   </div>
-  <div class="story"><div class="lbl">Como usar as partes interativas</div>
-    <p style="margin:0">Os quadros com o título "Teste aqui" são interativos. Os campos brancos são <b>editáveis</b> (clique e digite outro número). Os botões redondos <b>fazem algo acontecer</b>: avançam um passo, trocam o exemplo ou mostram a resposta. Não tem como quebrar nada: experimente à vontade. Em cada um, a linha em itálico logo abaixo do título diz <b>o que experimentar</b>.</p>
+  <div class="bench">
+    <header><span class="nm">Teste aqui</span></header>
+    <div class="in"><p style="margin:0">Os quadros "Teste aqui" são interativos. Os campos brancos são <b>editáveis</b> (clique e digite outro número) e os botões <b>fazem algo acontecer</b>: avançam um passo, trocam o exemplo ou mostram a resposta. Não tem como quebrar nada. A linha em itálico logo abaixo do título diz <b>o que experimentar</b>.</p></div>
   </div>
 </section>
 
 
+
 <!-- ================= TOUR ================= -->
-<section class="topic" id="tour">
+<section class="topic" id="tour" style="--acc:#6c4bc4">
   <span class="kicker">Antes de começar</span>
   <h2>Por dentro do computador</h2>
   <div class="oneline"><b>A ideia:</b> vamos "abrir" o computador em quatro camadas, como quem dá zoom num mapa: <b>a mesa</b> → <b>dentro do gabinete</b> → <b>dentro do processador</b> → <b>dentro de um núcleo</b>. Em cada camada, clique nas peças para saber o que são, e aperte "Animar o caminho" para ver os dados viajando.</div>
@@ -346,17 +496,17 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
     <ul>
       <li><b>Camada 1</b> = entrada, processamento, saída e armazenamento (tópicos 1 e 2).</li>
       <li><b>Camada 2</b> = memória principal, memória secundária, barramentos e pontes (tópico 2).</li>
-      <li><b>Camada 3</b> = núcleos e memórias cache L1, L2, L3 (tópico 5).</li>
-      <li><b>Camada 4</b> = PC, registrador de instrução, unidade de controle, registradores e ULA (tópicos 9 a 12). O desenho completo com todos os fios está no <a href="#datapath">caminho de dados</a>.</li>
+      <li><b>Camada 3</b> = núcleos e memórias cache L1, L2, L3 (tópico 6).</li>
+      <li><b>Camada 4</b> = PC, registrador de instrução, unidade de controle, registradores e ULA (tópicos 9 a 13). O desenho completo com todos os fios está no <a href="#datapath">caminho de dados</a>.</li>
     </ul>
   </div>
 </section>
 
 <!-- ================= T1 INTRODUÇÃO ================= -->
-<section class="topic" id="intro">
+<section class="topic" id="intro" style="--acc:#2b59c3">
   <span class="kicker">Tópico 1</span>
   <h2>O que é um computador, e de onde ele veio</h2>
-  <p class="src">Slides do tópico 1 · Monteiro, cap. 1</p>
+  <p class="src">Slides da aula 1 · Monteiro, cap. 1</p>
   <div class="oneline"><b>A ideia:</b> um computador é uma máquina que <b>recebe dados, processa e devolve informação</b>; o hardware é a parte física, o software são as instruções, e ele usa <b>binário</b> porque é mais barato e confiável.</div>
 
   <h3>Dados, processamento e informação</h3>
@@ -388,7 +538,9 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
     <div class="card" style="border:2px solid var(--data)"><h4>Arquitetura (ISA) = "O QUE o processador faz?"</h4><p>O que o <b>programador enxerga</b>: conjunto de instruções, modos de endereçamento, tipos e tamanhos dos dados, tamanho da palavra.<br><i>Ex.: decidir se haverá uma instrução de multiplicação.</i></p></div>
     <div class="card" style="border:2px solid var(--ctrl)"><h4>Organização = "COMO o processador faz?"</h4><p>Detalhes de <b>implementação</b>, invisíveis ao programador: frequência do relógio, sinais de controle, tecnologia, memória.<br><i>Ex.: decidir se a multiplicação terá um circuito próprio ou usará a soma repetidas vezes.</i></p></div>
   </div>
+  <div class="theory">
   <p class="prose"><b>Exemplo da família x86 da Intel</b> (8086 de 1979 … 80386, Pentium, Core i7): todos têm arquitetura compatível, então seus programas continuam funcionando quando você troca de processador. Mas a organização mudou muito: o 8086 tinha cerca de <b>33 mil transistores</b>; o Xeon Phi tem cerca de <b>8 bilhões</b>.</p>
+  </div>
 
   <h3>Por que binário?</h3>
   <div class="illus">
@@ -511,10 +663,10 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
 </section>
 
 <!-- ================= T2 SISTEMAS ================= -->
-<section class="topic" id="sistema">
+<section class="topic" id="sistema" style="--acc:#0e8a8c">
   <span class="kicker">Tópico 2</span>
   <h2>Componentes, memória e barramentos</h2>
-  <p class="src">Slides do tópico 2 · Monteiro, caps. 2 e 4</p>
+  <p class="src">Slides da aula 2 · Monteiro, caps. 2 e 4</p>
   <div class="oneline"><b>A ideia:</b> o computador tem três partes (<b>processador</b> que processa, <b>memória</b> que guarda, <b>entrada/saída</b> que comunica), ligadas por <b>barramentos</b>; tudo vira grupos de bits.</div>
   <div class="illus">
     <svg viewBox="0 0 960 220" role="img" aria-label="Componentes básicos de um computador">
@@ -531,7 +683,9 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
     </svg>
     <p class="cap">Hardware: processador (processamento), memória (armazenamento), E/S (comunicação). Software: compilador, sistema operacional, aplicativos.</p>
   </div>
+  <div class="theory">
   <p class="prose"><b>Modelo de von Neumann</b>, de novo: a memória guarda o programa, os dados e os resultados; os comandos são executados dentro da CPU. Então comandos e dados precisam ser <b>trazidos</b> para dentro do processador, e os resultados <b>levados de volta</b>. Existem variações, como a <b>arquitetura Harvard</b> (memórias separadas para instruções e dados).</p>
+  </div>
 
   <h3>Bit, caractere, byte e palavra</h3>
   <div class="grid2">
@@ -548,7 +702,9 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
     <tr><td>1 T (tera)</td><td class="m">2⁴⁰</td><td class="m">≈ 1,1 × 10¹²</td></tr>
     <tr><td>1 P, 1 E (peta, exa)</td><td class="m">2⁵⁰, 2⁶⁰</td><td class="m">…</td></tr>
   </table></div>
+  <div class="theory">
   <p class="prose"><b>Arquivos e registros</b> não são memórias: são <b>conteúdos</b>. Um <b>arquivo</b> é um conjunto de dados do mesmo tipo (ex.: os alunos da turma); cada item é um <b>registro</b> (60 alunos → 60 registros). Ficam em pastas, na memória secundária.</p>
+  </div>
 
   <h3>Memória principal: um armário de gavetas numeradas</h3>
   <div class="illus">
@@ -587,7 +743,7 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
   <div class="bench">
     <header><span class="nm">Teste aqui · Calculadora de memória</span><span class="hint">Resolve os exercícios de "quantos bits de endereço" e "qual a capacidade"</span></header>
     <div class="in">
-      <div class="howto"><b>Experimente:</b> o exemplo acima já está carregado (11 bits, 16 bits por célula). Depois teste o do tópico 5: 512K células de 16 bits, 2 células por acesso (coloque 19 bits de endereço).</div>
+      <div class="howto"><b>Experimente:</b> o exemplo acima já está carregado (11 bits, 16 bits por célula). Depois teste o exemplo da aula 5: 512K células de 16 bits, 2 células por acesso (coloque 19 bits de endereço).</div>
       <div class="row">
         <label class="f" for="mem-e">Bits de endereço (E)<input type="number" id="mem-e" value="11" min="1" max="64"></label>
         <label class="f" for="mem-m">Bits por célula (M)<input type="number" id="mem-m" value="16" min="1" max="128"></label>
@@ -654,10 +810,10 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
 </section>
 
 <!-- ================= T3 BASES ================= -->
-<section class="topic" id="bases">
+<section class="topic" id="bases" style="--acc:#6c4bc4">
   <span class="kicker">Tópico 3</span>
   <h2>Bases numéricas</h2>
-  <p class="src">Slides do tópico 3</p>
+  <p class="src">Slides da aula 3</p>
   <div class="oneline"><b>A ideia:</b> todo número é uma soma de "pacotes": cada dígito diz <b>quantos pacotes</b> de um certo tamanho existem, e o tamanho do pacote depende da <b>posição</b> do dígito e da <b>base</b>.</div>
 
   <div class="story"><div class="lbl">Pensa assim: dinheiro</div>
@@ -769,14 +925,18 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
       </div>
     </div>
   </div>
+  <div class="theory">
   <p class="prose"><b>Tabelinha para consultar</b> (vale a pena decorar a linha do binário com 4 bits):</p>
+  </div>
   <div class="tw"><table>
     <tr><th>Decimal</th><td class="m">0</td><td class="m">1</td><td class="m">2</td><td class="m">3</td><td class="m">4</td><td class="m">5</td><td class="m">6</td><td class="m">7</td><td class="m">8</td><td class="m">9</td><td class="m">10</td><td class="m">11</td><td class="m">12</td><td class="m">13</td><td class="m">14</td><td class="m">15</td></tr>
     <tr><th>Binário</th><td class="m">0000</td><td class="m">0001</td><td class="m">0010</td><td class="m">0011</td><td class="m">0100</td><td class="m">0101</td><td class="m">0110</td><td class="m">0111</td><td class="m">1000</td><td class="m">1001</td><td class="m">1010</td><td class="m">1011</td><td class="m">1100</td><td class="m">1101</td><td class="m">1110</td><td class="m">1111</td></tr>
     <tr><th>Octal</th><td class="m">0</td><td class="m">1</td><td class="m">2</td><td class="m">3</td><td class="m">4</td><td class="m">5</td><td class="m">6</td><td class="m">7</td><td class="m">10</td><td class="m">11</td><td class="m">12</td><td class="m">13</td><td class="m">14</td><td class="m">15</td><td class="m">16</td><td class="m">17</td></tr>
     <tr><th>Hexa</th><td class="m">0</td><td class="m">1</td><td class="m">2</td><td class="m">3</td><td class="m">4</td><td class="m">5</td><td class="m">6</td><td class="m">7</td><td class="m">8</td><td class="m">9</td><td class="m">A</td><td class="m">B</td><td class="m">C</td><td class="m">D</td><td class="m">E</td><td class="m">F</td></tr>
   </table></div>
+  <div class="theory">
   <p class="prose"><b>Octal ↔ hexa</b>: não tem atalho direto. Passe pelo binário. Exemplo: (3174)₈ → cada dígito vira 3 bits: 011 001 111 100 → reagrupe de 4 em 4: 0110 0111 1100 → <b>67C₁₆</b>.</p>
+  </div>
 
   <h3>E os números com vírgula?</h3>
   <div class="story"><div class="lbl">A ideia</div>
@@ -824,7 +984,9 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
       <li>Agrupar a partir da <b>esquerda</b> dá resposta errada. Ex.: 10 1101 1011₂ = 2DB₁₆ (o "10" sozinho fica à esquerda).</li>
     </ul>
   </div>
+  <div class="theory">
   <h4>Exercícios da aula, resolvidos (clique para abrir)</h4>
+  </div>
   <details><summary>(12BC)₁₆ em decimal?</summary><p class="mono">1·16³ + 2·16² + 11·16 + 12 = 4096 + 512 + 176 + 12 = <b>4796</b></p></details>
   <details><summary>(3174)₈ em hexadecimal?</summary><p>Passe pelo binário: 3=011, 1=001, 7=111, 4=100 → 011001111100 → em grupos de 4: 0110 0111 1100 → <b>67C₁₆</b></p></details>
   <details><summary>(2E7A)₁₆ em octal?</summary><p>2=0010, E=1110, 7=0111, A=1010 → 0010111001111010 → em grupos de 3 pela direita: 010 111 001 111 010 → <b>27172₈</b></p></details>
@@ -833,10 +995,10 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
 </section>
 
 <!-- ================= T4 ARITMÉTICA ================= -->
-<section class="topic" id="aritmetica">
-  <span class="kicker">Tópico 4 · parte 1</span>
+<section class="topic" id="aritmetica" style="--acc:#d9531e">
+  <span class="kicker">Tópico 4</span>
   <h2>Contas em binário</h2>
-  <p class="src">Slides do tópico 4</p>
+  <p class="src">Slides da aula 4</p>
   <div class="oneline"><b>A ideia:</b> é a mesma "conta armada" que você aprendeu na escola, só que o "vai-um" acontece quando a coluna chega a <b>2</b>, e não a 10.</div>
   <div class="story"><div class="lbl">Por que aprender isso, se dá para converter para decimal?</div>
     <p style="margin:0">Daria, mas o computador <b>não faz</b> isso: converter só para fazer uma conta é lento, e o processador trabalha direto em base 2. Para entender (e depois construir) o circuito que soma, precisamos saber como a conta é feita em binário.</p>
@@ -927,10 +1089,10 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
 </section>
 
 <!-- ================= T4 SINAL ================= -->
-<section class="topic" id="sinal">
-  <span class="kicker">Tópico 4 · parte 2</span>
+<section class="topic" id="sinal" style="--acc:#c2364e">
+  <span class="kicker">Tópico 5</span>
   <h2>Números negativos: SM, C1, C2 e overflow</h2>
-  <p class="src">Slides do tópico 4</p>
+  <p class="src">Slides da aula 4</p>
   <div class="oneline"><b>A ideia:</b> o computador não tem um símbolo "−"; então combinamos uma <b>regra</b> para que alguns padrões de bits signifiquem números negativos. A regra usada nos processadores é o <b>Complemento a 2 (C2)</b>, porque com ela somar e subtrair usam o mesmo circuito.</div>
 
   <div class="story"><div class="lbl">Pensa assim: o hodômetro do carro</div>
@@ -956,7 +1118,9 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
     </svg>
   </div>
 
+  <div class="theory">
   <p class="prose">Com <b>n bits</b> existem <b>2ⁿ padrões</b> diferentes (com 3 bits: 000 até 111, ou seja, 8 padrões). Esses padrões podem significar qualquer conjunto de 8 números: 0 a 7, ou 7 a 0, ou até 523, 223, 723… Tudo depende do <b>acordo</b>. Para números com sinal, existem três acordos clássicos. No teste abaixo, o <b>mesmo padrão</b> de bits é lido pelos três acordos ao mesmo tempo.</p>
+  </div>
 
   <div class="bench">
     <header><span class="nm">Teste aqui · Um padrão de bits, quatro significados</span><span class="hint">O quadrado com faixa rosa embaixo é o bit de sinal</span></header>
@@ -997,7 +1161,9 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
   </table></div>
 
   <h3>Por que o SM dá trabalho para a máquina</h3>
+  <div class="theory">
   <p class="prose">Para somar em SM, o circuito teria que: (1) olhar os dois sinais; (2) se forem iguais, somar os valores e manter o sinal; (3) se forem diferentes, descobrir qual é maior, subtrair o menor do maior e usar o sinal do maior. Isso exige <b>um circuito de soma, um de subtração e uma lógica de sinais</b>, além de tratar o zero duplo. Mais caro e mais lento. Veja os exemplos da aula (6 bits):</p>
+  </div>
   <div class="grid2">
     <div class="card mono" style="font-size:.9rem"><b style="font-family:var(--f-body)">Sinais iguais → soma os valores</b><br>&nbsp;+10 → 001010<br>+15 → 001111<br>=25 → 011001<br><br>−18 → 110010<br>&nbsp;−4 → 100100<br>−22 → 110110</div>
     <div class="card mono" style="font-size:.9rem"><b style="font-family:var(--f-body)">Sinais diferentes → maior − menor, sinal do maior</b><br>+15 → 001111<br>&nbsp;−4 → 100100<br>+11 → 001011<br><br>−18 → 110010<br>+10 → 001010<br>&nbsp;−8 → 101000</div>
@@ -1080,10 +1246,10 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
 </section>
 
 <!-- ================= T5 CACHE ================= -->
-<section class="topic" id="cache">
-  <span class="kicker">Tópico 5</span>
+<section class="topic" id="cache" style="--acc:#2c8a57">
+  <span class="kicker">Tópico 6</span>
   <h2>Memória cache</h2>
-  <p class="src">Slides do tópico 5 · Monteiro, cap. 5 (texto da P2)</p>
+  <p class="src">Slides da aula 5 · Monteiro, cap. 5 (texto da P2)</p>
   <div class="oneline"><b>A ideia:</b> a cache é uma memória <b>pequena e rápida</b> entre o processador e a RAM que guarda <b>cópias</b> dos pedaços da memória usados recentemente; como os programas tendem a reusar e a andar em sequência, quase sempre o que o processador pede já está lá.</div>
   <div class="story"><div class="lbl">Pensa assim: o bibliotecário (exemplo do slide)</div>
     <p>Numa biblioteca onde só o bibliotecário pega os livros no depósito, cada pedido exige uma ida e volta, mesmo para um livro que acabou de ser devolvido. Agora damos a ele <b>um espaço na mesa para 10 livros</b>: quando alguém devolve um livro, ele deixa na mesa em vez de levar ao depósito. Se o próximo cliente pedir esse livro, ele entrega na hora.</p>
@@ -1108,8 +1274,10 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
   </div>
 
   <h3>Por que funciona: o princípio da localidade</h3>
+  <div class="theory">
   <p class="prose"><b>O problema</b>: no exemplo do livro, o processador soma dois números em <b>2 ns</b>, mas a memória principal leva <b>100 ns</b> para entregar os dados. A RAM principal é <b>DRAM</b> (1 capacitor + 1 transistor por bit, precisa ser recarregada, é barata e lenta); a cache é <b>SRAM</b> (rápida e cara). O processador melhora muito mais rápido que a DRAM (que melhora cerca de 10% ao ano), então a distância só cresce.</p>
   <p class="prose">Nos anos 1960, pesquisadores (principalmente da IBM) perceberam que os programas <b>não acessam a memória ao acaso</b>: em cada intervalo curto de tempo, só uma pequena parte da memória é usada. O processador é tão mais rápido que a memória que ficaria parado esperando (<i>wait state</i>) se não houvesse cache, e essa diferença só aumenta com o tempo.</p>
+  </div>
   <div class="grid2">
     <div class="card"><h4>Localidade temporal</h4><p>O <b>mesmo endereço</b> tende a ser acessado de novo logo. Ex.: as instruções de um <b>laço</b> são executadas várias vezes; a variável <code>i</code> é lida a cada volta.</p></div>
     <div class="card"><h4>Localidade espacial</h4><p>Endereços <b>vizinhos</b> tendem a ser acessados em seguida. Ex.: instruções em sequência; percorrer um vetor <code>a[0], a[1], a[2]…</code>. Por isso a cache traz o <b>bloco inteiro</b>, não só a palavra pedida.</p></div>
@@ -1158,7 +1326,9 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
       </g>
     </svg>
   </div>
+  <div class="theory">
   <p class="prose">Como há muito mais blocos do que linhas, é preciso uma <b>regra</b> para decidir em qual linha cada bloco pode ficar. São três: <b>direto</b>, <b>associativo</b> e <b>associativo por conjunto</b>. Para o controle da cache, o endereço é dividido em <b>campos</b>, e a pergunta das provas é sempre: "<b>quantos bits tem cada campo?</b>"</p>
+  </div>
 
   <div class="illus">
     <svg viewBox="0 0 960 330" role="img" aria-label="Os três tipos de mapeamento comparados">
@@ -1247,7 +1417,9 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
   </div>
 
   <h3>Quantos bits a cache ocupa de verdade</h3>
+  <div class="theory">
   <p class="prose">A cache guarda os <b>dados</b> e, em cada linha, a <b>tag</b> (que bloco está ali). Então o tamanho real dela é maior que o "32 KB" do anúncio. O livro cobra essa conta nos três mapeamentos (exemplos 5.2, 5.5 e 5.8):</p>
+  </div>
   <div class="walk"><div class="lbl">Total de bits = linhas × (bits de dados por linha + bits de tag)</div>
     <ol>
       <li>Cache de 32 KB, linhas de 8 bytes, MP de 16 MB (endereço de 24 bits). Linhas = 32 KB ÷ 8 B = <b>4K = 2¹²</b>. Blocos da MP = 16 MB ÷ 8 B = <b>2²¹</b>.</li>
@@ -1267,7 +1439,9 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
   </div>
 
   <h3>Simulando a cache: acertos e faltas</h3>
+  <div class="theory">
   <p class="prose">Exemplo do slide: <b>MP de 64 bytes</b> dividida em <b>16 blocos de 4 bytes</b>, e uma <b>cache de 4 linhas</b>. O endereço tem 6 bits. No direto: 2 bits de tag, 2 de linha, 2 de byte. No associativo: 4 de tag, 2 de byte.</p>
+  </div>
   <div class="bench">
     <header><span class="nm">Teste aqui · Simulador de cache (MP 64 B, blocos de 4 B, 4 linhas)</span><span class="hint">Digite endereços de 0 a 63 separados por espaço</span></header>
     <div class="in">
@@ -1291,7 +1465,9 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
   </div>
 
   <h3>Quem sai quando a cache está cheia? (substituição)</h3>
+  <div class="theory">
   <p class="prose">No mapeamento <b>direto</b> não há escolha: o bloco novo sempre vai para a sua linha. Nos <b>associativos</b>, é preciso escolher quem sai:</p>
+  </div>
   <div class="grid2">
     <div class="card"><h4>LRU · Least Recently Used</h4><p>Sai o que está <b>há mais tempo sem ser usado</b>. Com conjuntos de 2 linhas basta <b>1 bit por linha</b>: quem é acessada recebe 1 e a outra recebe 0; na hora de substituir, sai a que tem 0. Com conjuntos de 4, o livro sugere dividir em 2 pares: 1 bit escolhe o par menos usado e outro bit escolhe a linha dentro do par. Com associatividade maior, fazer LRU exato fica caro.</p></div>
     <div class="card"><h4>FIFO · First-In, First-Out</h4><p>Uma <b>fila</b>: sai o que <b>entrou primeiro</b>, não importa quanto é usado.</p></div>
@@ -1300,13 +1476,17 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
   </div>
 
   <h3>E quando o processador escreve? (políticas de escrita)</h3>
+  <div class="theory">
   <p class="prose">A escrita é feita na cache, mas a MP também precisa ficar correta, porque ela pode ser lida por dispositivos de E/S (DMA) ou por outros processadores com suas próprias caches.</p>
+  </div>
   <div class="grid3">
     <div class="card"><h4>Write through</h4><p>"Escreve nas duas": toda escrita na cache também vai para a MP. Sempre iguais, mas pode gerar <b>muitas escritas desnecessárias</b>.</p></div>
     <div class="card"><h4>Write back</h4><p>"Escreve na volta": só atualiza a MP quando o bloco <b>sai</b> da cache, e só se foi alterado (um <b>bit</b> marca a alteração). Sem escritas inúteis, mas a MP fica <b>desatualizada</b> por um tempo.</p></div>
     <div class="card"><h4>Write once</h4><p>Para <b>multiprocessadores</b> no mesmo barramento: a 1ª escrita vai também para a MP (avisando os outros, que bloqueiam aquela palavra); as seguintes ficam só na cache até o bloco sair.</p></div>
   </div>
+  <div class="theory">
   <p class="prose">Como só cerca de <b>15%</b> dos acessos são escritas, o write through simples costuma bastar.</p>
+  </div>
 
   <h3>Níveis e tamanho</h3>
   <div class="grid2">
@@ -1326,10 +1506,10 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
 </section>
 
 <!-- ================= T6 PROGRAMA → EXECUTÁVEL ================= -->
-<section class="topic" id="programa">
-  <span class="kicker">Tópico 8 · parte 1</span>
+<section class="topic" id="programa" style="--acc:#b0631a">
+  <span class="kicker">Tópico 7</span>
   <h2>Do programa em C ao executável, e os modos de endereçamento</h2>
-  <p class="src">Slides do tópico 8 (arquivo "AC-topico6")</p>
+  <p class="src">Slides da aula 8 (arquivo "AC-topico6")</p>
   <div class="oneline"><b>A ideia:</b> o processador só entende o seu <b>conjunto de instruções (ISA)</b> em binário; o programa em C passa por <b>compilador → montador → ligador → carregador</b> até virar algo que ele executa, e cada instrução diz onde achar seus operandos através de um <b>modo de endereçamento</b>.</div>
 
   <h3>Conjunto de instruções (ISA) e microarquitetura</h3>
@@ -1345,7 +1525,9 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
     <tr><td><b>PowerPC</b></td><td>carros, consoles (Wii, Wii U, Xbox 360, PlayStation 3)</td></tr>
     <tr><td><b>ARM</b></td><td>a mais popular do mundo: smartphones, tablets, TVs, e começando em servidores</td></tr>
   </table></div>
+  <div class="theory">
   <p class="prose">Famílias às vezes <b>acrescentam</b> instruções (ex.: <b>MMX</b> no Pentium, em 1997) mas mantêm as antigas, para garantir compatibilidade.</p>
+  </div>
 
   <h3>Geração do executável</h3>
   <div class="illus">
@@ -1382,7 +1564,9 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
   </div>
 
   <h3>Formato geral e modos de endereçamento</h3>
+  <div class="theory">
   <p class="prose">Toda instrução tem um <b>opcode</b> (que identifica a operação) e de <b>0 a 3 campos de operandos</b>. O <b>modo de endereçamento</b> diz como interpretar o campo do operando: é o próprio valor? É um endereço? É um registrador?</p>
+  </div>
   <div class="bench">
     <header><span class="nm">Teste aqui · Modos de endereçamento</span><span class="hint">O mesmo campo de operando, lido de cinco jeitos</span></header>
     <div class="in">
@@ -1406,10 +1590,10 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
 </section>
 
 <!-- ================= T8 INSTRUÇÕES ================= -->
-<section class="topic" id="instrucoes">
-  <span class="kicker">Tópico 8 · parte 2</span>
+<section class="topic" id="instrucoes" style="--acc:#2b59c3">
+  <span class="kicker">Tópico 8</span>
   <h2>Instruções e linguagem de montagem (assembly)</h2>
-  <p class="src">Slides do tópico 8, continuação (arquivo "Ac-topico6p2")</p>
+  <p class="src">Slides da aula 8, continuação (arquivo "Ac-topico6p2")</p>
   <div class="oneline"><b>A ideia:</b> um programa é uma <b>receita</b>, e cada <b>instrução</b> é um passo da receita: ela diz <b>o que fazer</b> (a operação) e <b>com o quê</b> (os operandos).</div>
   <div class="story"><div class="lbl">Pensa assim: a receita de bolo</div>
     <p>"<b>Misture</b> farinha e ovos <b>na tigela</b>." O verbo é a operação; farinha e ovos são as entradas; a tigela é onde fica o resultado. Uma instrução de máquina é igual: <code>add c, a, b</code> = "<b>some</b> a e b e <b>guarde em</b> c".</p>
@@ -1433,7 +1617,9 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
   </div>
 
   <h3>Quantos "endereços" cabem numa instrução?</h3>
+  <div class="theory">
   <p class="prose">"Endereço" aqui quer dizer <b>onde está um operando</b> (ou onde guardar o resultado). Uma instrução pode trazer 3, 2, 1 ou até nenhum endereço escrito nela. Quando falta algum, ele está <b>implícito</b>: a máquina já sabe onde procurar. No teste abaixo, a mesma conta <code>c = a + b</code> é escrita dos quatro jeitos.</p>
+  </div>
   <div class="bench">
     <header><span class="nm">Teste aqui · c = a + b de quatro jeitos</span><span class="hint">Quanto menos endereços, mais instruções</span></header>
     <div class="in">
@@ -1454,7 +1640,9 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
     <div class="card"><h4>Mais endereços na instrução</h4><p>Instrução mais <b>complexa</b> e maior · precisa de mais registradores · operações entre registradores são rápidas · o programa traduzido tem <b>menos instruções</b>.</p></div>
     <div class="card"><h4>Menos endereços na instrução</h4><p>Instrução mais <b>simples</b> · o programa tem <b>mais instruções</b> · mas cada uma é buscada e executada mais rápido.</p></div>
   </div>
+  <div class="theory">
   <p class="prose"><b>Decisões de projeto</b> de quem cria um processador: quantas e quais operações (e quão complexas), quais tipos de dados, qual o formato da instrução (tamanho do opcode, número de endereços).</p>
+  </div>
 
   <h3>Os tipos de instrução</h3>
   <div class="grid3">
@@ -1523,10 +1711,10 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
 </section>
 
 <!-- ================= T9 COMPONENTES ================= -->
-<section class="topic" id="componentes">
-  <span class="kicker">Tópico 9 · parte 1</span>
+<section class="topic" id="componentes" style="--acc:#0e8a8c">
+  <span class="kicker">Tópico 9</span>
   <h2>As peças do processador</h2>
-  <p class="src">Slides do tópico 9</p>
+  <p class="src">Slides da aula 9</p>
   <div class="oneline"><b>A ideia:</b> o processador repete <b>sempre o mesmo ciclo</b> (buscar a instrução → entender → pegar os dados → calcular → guardar); o que muda de uma vez para outra são a instrução e os dados.</div>
   <div class="story"><div class="lbl">Pensa assim: uma cozinha</div>
     <p style="margin:0">O processador é como uma cozinheira seguindo uma receita. Cada peça do processador tem um papel nessa cozinha. A ilustração abaixo é o "mapa" que vamos usar daqui até o fim da matéria.</p>
@@ -1601,8 +1789,10 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
   </div>
 
   <h3>As peças, uma por uma</h3>
+  <div class="theory">
   <p class="prose">Cada peça abaixo tem uma explicação e uma parte para testar. Elas vão aparecer todas juntas no "caminho de dados", mais adiante.</p>
-  <div class="grid2" style="grid-template-columns:repeat(auto-fit,minmax(400px,1fr))">
+  </div>
+  <div class="grid2" style="grid-template-columns:repeat(auto-fit,minmax(min(400px,100%),1fr))">
     <div class="bench" style="margin:0">
       <header><span class="nm">Multiplexador (MUX)</span><span class="hint">um "seletor de canal"</span></header>
       <div class="in">
@@ -1667,14 +1857,14 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
 
 
 <!-- ================= UCP DO LIVRO ================= -->
-<section class="topic" id="ucp-livro">
-  <span class="kicker">Tópico 9 · parte 2</span>
+<section class="topic" id="ucp-livro" style="--acc:#6c4bc4">
+  <span class="kicker">Tópico 10</span>
   <h2>O processador do livro, funcionando passo a passo</h2>
   <div class="oneline"><b>A ideia:</b> o Monteiro explica o processador com uma máquina bem simples, parecida com o Intel 8080. Ela tem um <b>acumulador (ACC)</b> e instruções de um operando só. Entendendo como ela executa <code>LDA</code> e <code>ADD</code>, você entende qualquer processador: os modernos só acrescentam truques para ir mais rápido.</div>
 
   <h3>As duas áreas: processamento e controle</h3>
   <div class="story"><div class="lbl">Pensa assim: levantar o braço</div>
-    <p style="margin:0">Para levantar o braço, o <b>cérebro</b> primeiro entende a ordem e manda sinais pelos <b>nervos</b>; quem faz força são os <b>músculos</b>. No processador é igual. A <b>área de controle</b> (UC, decodificador, RI, CI) entende a instrução e manda sinais pelo <b>barramento interno</b>. A <b>área de processamento</b> (UAL, ACC, registradores) faz a conta. Em inglês essa segunda parte se chama <i>data path</i>, que é o "caminho de dados" dos tópicos 10 a 12.</p>
+    <p style="margin:0">Para levantar o braço, o <b>cérebro</b> primeiro entende a ordem e manda sinais pelos <b>nervos</b>; quem faz força são os <b>músculos</b>. No processador é igual. A <b>área de controle</b> (UC, decodificador, RI, CI) entende a instrução e manda sinais pelo <b>barramento interno</b>. A <b>área de processamento</b> (UAL, ACC, registradores) faz a conta. Em inglês essa segunda parte se chama <i>data path</i>, que é o "caminho de dados" dos tópicos 12 e 13.</p>
   </div>
 
   <div class="illus">
@@ -1722,7 +1912,9 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
   </div>
 
   <h3>O ciclo de instrução detalhado (em LTR)</h3>
+  <div class="theory">
   <p class="prose">O livro escreve cada passo em <b>LTR</b> (linguagem de transferência entre registradores). A seta ← quer dizer "recebe". Leia assim: <code>RI ← (CI)</code> = "o RI recebe o conteúdo da célula cujo endereço está no CI".</p>
+  </div>
   <div class="walk"><div class="lbl">Os 6 passos</div>
     <ol>
       <li><b>Buscar a instrução</b>: <code>REM ← CI</code>; a UC liga o sinal <b>READ</b>; a memória põe o conteúdo no barramento de dados → <code>RDM ← M(REM)</code>; <code>RI ← RDM</code>.</li>
@@ -1780,7 +1972,7 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
   </div>
   <div class="grid2">
     <div class="card"><h4>UC microprogramada</h4><p>Dentro da UC há uma pequena <b>ROM com microprogramas</b>, um para cada instrução de máquina. O decodificador aponta qual microprograma rodar, e cada <b>microinstrução</b> faz uma microoperação. Vantagem: <b>flexível e barata</b>, porque dá para acrescentar instruções numa família de processadores sem redesenhar o chip. Desvantagem: um pouco mais lenta, já que as microinstruções também precisam ser interpretadas. Surgiu no <b>IBM/360</b> e é típica de <b>CISC</b> (família x86).</p></div>
-    <div class="card"><h4>UC programada direto no hardware</h4><p>Os sinais de controle saem de <b>circuitos lógicos fixos</b>, sem microprograma. Mais <b>rápida</b> e menos flexível: mudar uma instrução exige mudar o circuito. É o estilo das máquinas <b>RISC</b> e do controle que você montou nos tópicos 10 a 12 (as expressões lógicas para RegWrite, ALUSrc…).</p></div>
+    <div class="card"><h4>UC programada direto no hardware</h4><p>Os sinais de controle saem de <b>circuitos lógicos fixos</b>, sem microprograma. Mais <b>rápida</b> e menos flexível: mudar uma instrução exige mudar o circuito. É o estilo das máquinas <b>RISC</b> e do controle que você montou nos tópicos 12 e 13 (as expressões lógicas para RegWrite, ALUSrc…).</p></div>
   </div>
   <div class="grid2">
     <div class="card"><h4>Sequencial × pipeline</h4><p><b>Sequencial</b>: termina uma instrução inteira antes de começar a próxima. É como uma fábrica que monta uma TV completa por vez (8080, Z80, 6800). <b>Pipeline</b>: várias instruções em etapas diferentes ao mesmo tempo, numa linha de montagem. Estágios: <b>8086</b> 2 · <b>80486</b> 5 · <b>Pentium Pro</b> 6 · <b>Pentium II</b> 10 · <b>Pentium 4</b> até 20.</p></div>
@@ -1826,13 +2018,13 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
   </ul></div>
 </section>
 <!-- ================= FORMATOS ================= -->
-<section class="topic" id="formatos">
-  <span class="kicker">Tópico 9 · parte 3</span>
+<section class="topic" id="formatos" style="--acc:#d9531e">
+  <span class="kicker">Tópico 11</span>
   <h2>As 10 instruções e os formatos R, I e J</h2>
-  <p class="src">Slides dos tópicos 9 e 10</p>
+  <p class="src">Slides das aulas 9 e 10</p>
   <div class="oneline"><b>A ideia:</b> toda instrução tem <b>32 bits</b>, divididos em "gavetas" (campos); existem só três modelos de divisão: <b>R</b> (contas entre registradores), <b>I</b> (tem uma constante) e <b>J</b> (salto).</div>
   <div class="story"><div class="lbl">O que o professor está construindo</div>
-    <p style="margin:0">Nos tópicos 9 a 12 a turma projeta, peça por peça, um processador simplificado baseado no <b>MIPS</b>. Os passos são: <b>(1)</b> escolher quais instruções ele vai entender; <b>(2)</b> decidir a organização (quantos registradores, tamanho da palavra, o que a ALU faz); <b>(3)</b> ligar as peças com fios (o caminho de dados). Para ficar simples, ele entende só <b>10 instruções</b>, só números inteiros, só soma e subtração, só E e OU. O resto (multiplicar, ponto flutuante…) pode ser feito por software.</p>
+    <p style="margin:0">Nas aulas 9 a 12 a turma projeta, peça por peça, um processador simplificado baseado no <b>MIPS</b>. Os passos são: <b>(1)</b> escolher quais instruções ele vai entender; <b>(2)</b> decidir a organização (quantos registradores, tamanho da palavra, o que a ALU faz); <b>(3)</b> ligar as peças com fios (o caminho de dados). Para ficar simples, ele entende só <b>10 instruções</b>, só números inteiros, só soma e subtração, só E e OU. O resto (multiplicar, ponto flutuante…) pode ser feito por software.</p>
   </div>
   <div class="illus">
     <svg viewBox="0 0 960 250" role="img" aria-label="Os três formatos de instrução">
@@ -1889,7 +2081,7 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
     <tr><td class="m">beq</td><td>I</td><td class="m">000100</td><td>—</td><td>se rs == rt: PC = PC + 4 + constante × 4</td></tr>
     <tr><td class="m">j</td><td>J</td><td class="m">000010</td><td>—</td><td>pula para o endereço (explicado no caminho de dados)</td></tr>
   </table></div>
-  <div class="story"><div class="lbl">Decisões de organização (tópico 10)</div>
+  <div class="story"><div class="lbl">Decisões de organização (aula 10)</div>
     <ul>
       <li><b>32 registradores</b>, porque o campo de registrador tem 5 bits (2⁵ = 32).</li>
       <li>Registradores especiais mínimos: <b>PC, IR, MAR e MBR</b>.</li>
@@ -1905,13 +2097,13 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
 </section>
 
 <!-- ================= DATAPATH ================= -->
-<section class="topic" id="datapath">
-  <span class="kicker">Tópicos 10, 11 e 12</span>
+<section class="topic" id="datapath" style="--acc:#c2364e">
+  <span class="kicker">Tópico 12</span>
   <h2>O caminho de dados: a viagem de uma instrução</h2>
-  <p class="src">Slides dos tópicos 10 (parte 1), 11 (parte 2) e 12 (parte 3)</p>
+  <p class="src">Slides das aulas 10 (parte 1), 11 (parte 2) e 12 (parte 3)</p>
   <div class="oneline"><b>A ideia:</b> o caminho de dados é o "mapa de ruas" por onde os bits viajam dentro do processador; cada instrução usa algumas ruas, e nos cruzamentos há um <b>MUX</b> (um "semáforo") que a unidade de controle ajusta conforme a instrução.</div>
   <div class="story"><div class="lbl">Como os slides constroem isso</div>
-    <p style="margin:0">O professor não desenha tudo de uma vez. Ele monta um caminho <b>separado</b> para cada tipo de instrução (tipo R no tópico 10; beq, addi, lw e sw no tópico 11) e, no tópico 12, <b>junta todos num só</b>. Onde dois caminhos querem mandar coisas diferentes para a mesma entrada, ele coloca um MUX. Abaixo está o resultado final, interativo, e logo depois a explicação de cada parte.</p>
+    <p style="margin:0">O professor não desenha tudo de uma vez. Ele monta um caminho <b>separado</b> para cada tipo de instrução (tipo R na aula 10; beq, addi, lw e sw na aula 11) e, na aula 12, <b>junta todos num só</b>. Onde dois caminhos querem mandar coisas diferentes para a mesma entrada, ele coloca um MUX. Abaixo está o resultado final, interativo, e logo depois a explicação de cada parte.</p>
   </div>
   <div class="walk"><div class="lbl">Como ler o desenho</div>
     <ol>
@@ -1980,7 +2172,9 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
   </div>
 
   <h3>Juntando tudo: onde entram os MUX</h3>
+  <div class="theory">
   <p class="prose">Quando juntamos os caminhos, algumas entradas passam a ter <b>mais de uma origem possível</b>. Fios não podem simplesmente ser "emendados", então cada uma dessas entradas ganha um MUX. São estes:</p>
+  </div>
   <div class="tw"><table>
     <tr><th>Entrada que recebe coisas diferentes</th><th>Opção 0</th><th>Opção 1</th><th>MUX / sinal</th></tr>
     <tr><td>Segunda entrada da ALU</td><td>Valor Lido 2 (registrador) — tipo R, beq</td><td>constante estendida — addi, lw, sw</td><td class="m">ALUSrc</td></tr>
@@ -1989,26 +2183,32 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
     <tr><td>Próximo PC</td><td>PC + 4</td><td>alvo do beq</td><td class="m">Branch E Zero</td></tr>
     <tr><td>Próximo PC (final)</td><td>o que veio do MUX anterior</td><td>endereço do jump</td><td class="m">Jump</td></tr>
   </table></div>
+  <div class="theory">
   <p class="prose">O que é <b>igual</b> em todas: o incremento do PC, a busca da instrução para o RI, o uso da ALU com a primeira entrada sempre vindo do "Valor Lido 1", e os registradores lidos sempre indicados pelos bits 25–21 e 20–16.</p>
+  </div>
   <div class="trap"><div class="lbl">A pegadinha clássica do projeto (cai em prova)</div>
     <p style="margin:.3rem 0 0">Se o MUX do PC fosse controlado <b>só pelo bit Zero</b> da ALU, qualquer instrução que usasse a ALU e, por coincidência, desse resultado zero (por exemplo um <code>sub</code> de dois valores iguais) mudaria o PC para um endereço errado. A solução é uma <b>porta E</b>: o MUX só escolhe o alvo quando <b>Zero = 1 E Branch = 1</b>, ou seja, só quando a instrução <b>é</b> um beq.</p></div>
 
   <h3>Como o endereço do jump é montado</h3>
   <div class="illus svgwrap" id="jmp-svg"></div>
+  <div class="theory">
   <p class="prose">O novo PC é formado por: os <b>4 bits mais altos de PC + 4</b>, seguidos dos <b>26 bits</b> da instrução, seguidos de <b>00</b> (o deslocamento de 2 à esquerda, que multiplica por 4). Consequência: só dá para saltar para endereços com o mesmo começo (4 bits) do PC e que sejam múltiplos de 4.</p>
+  </div>
 </section>
 
 <!-- ================= CONTROLE ================= -->
-<section class="topic" id="controle">
-  <span class="kicker">Tópico 12 · final</span>
+<section class="topic" id="controle" style="--acc:#2c8a57">
+  <span class="kicker">Tópico 13</span>
   <h2>A unidade de controle: quem ajusta os semáforos</h2>
-  <p class="src">Slides do tópico 12</p>
+  <p class="src">Slides da aula 12</p>
   <div class="oneline"><b>A ideia:</b> a unidade de controle olha o <b>opcode</b> da instrução (bits 31–26) e decide o valor de cada sinal de controle; um segundo bloco, o <b>controle da ALU</b>, decide qual conta a ALU faz.</div>
   <div class="story"><div class="lbl">A intuição</div>
     <p style="margin:0">Voltando à cozinha: a cozinheira lê o passo da receita e já sabe quais aparelhos ligar. Ela não precisa pensar em cada aparelho separadamente; cada tipo de passo tem uma "combinação" pronta. A tabela abaixo é exatamente essa lista de combinações. Os slides contam <b>11 linhas</b> de controle no caminho de dados: 4 da ALU + 7 do controle principal (mais tarde aparece a 8ª, Jump, e as duas OpALU).</p>
   </div>
   <div class="tw"><table class="ctrltable" id="ctl-tab"></table></div>
+  <div class="theory">
   <p class="muted" style="font-size:.9rem">Clique numa linha para destacá-la. 1 em roxo = ligado. X = "tanto faz", porque a instrução não usa aquela parte.</p>
+  </div>
   <div class="grid2">
     <div class="card"><h4>O que cada sinal faz</h4><ul style="margin:0;padding-left:1.1rem;font-size:.97rem">
       <li><b>RegDst</b>: qual campo diz o registrador a ser escrito (0 = bits 20–16; 1 = bits 15–11)</li>
@@ -2041,8 +2241,8 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
 </section>
 
 <!-- ================= REGISTRADORES / CICLO ================= -->
-<section class="topic" id="registradores">
-  <span class="kicker">Tópico 13 · parte 1</span>
+<section class="topic" id="registradores" style="--acc:#a8790a">
+  <span class="kicker">Tópico 14</span>
   <h2>Registradores, ciclo de instrução e interrupção</h2>
   <p class="src">Sem slides: Stallings, cap. 12 (arquivo "pipeline" do projeto)</p>
   <div class="oneline"><b>A ideia:</b> o processador precisa de uma memória interna bem pequena e rápida (os <b>registradores</b>) para lembrar onde está (PC), o que está fazendo (IR) e para conversar com a memória (MAR e MBR).</div>
@@ -2068,7 +2268,9 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
     <tr><th>Flags: vantagens</th><th>Flags: desvantagens</th></tr>
     <tr><td>Diminuem a quantidade de instruções de comparação (COMPARE, TEST) · simplificam os desvios · permitem vários desvios depois de um só teste</td><td>Deixam hardware e software mais complexos · são irregulares (ficam fora do caminho principal) · ainda precisam de instruções especiais · <b>atrapalham o pipeline</b> (exigem sincronização)</td></tr>
   </table></div>
+  <div class="theory">
   <p class="prose"><b>Quantos registradores ter?</b> O livro diz que entre <b>8 e 32</b> é o ideal: com menos, o programa vai demais à memória; com mais, quase não melhora (algumas máquinas RISC usam centenas, mas é outra abordagem). Exemplos do livro: o <b>Motorola MC68000</b> separa 8 registradores de dados e 9 de endereço; o <b>Intel 8086</b> usa registradores de uso específico (código mais compacto, menos flexível); o <b>80386</b> passou para 32 bits mantendo a organização antiga, por compatibilidade.</p>
+  </div>
 
   <h3>O que acontece dentro de cada ciclo</h3>
   <div class="bench">
@@ -2095,8 +2297,8 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
 </section>
 
 <!-- ================= PIPELINE ================= -->
-<section class="topic" id="pipeline">
-  <span class="kicker">Tópico 13 · parte 2</span>
+<section class="topic" id="pipeline" style="--acc:#2b59c3">
+  <span class="kicker">Tópico 15</span>
   <h2>Pipeline: a lavanderia das instruções</h2>
   <p class="src">Sem slides: Stallings, cap. 12</p>
   <div class="oneline"><b>A ideia:</b> em vez de terminar uma instrução inteira antes de começar a próxima, dividimos o trabalho em <b>etapas</b> e deixamos cada etapa trabalhar numa instrução diferente <b>ao mesmo tempo</b>, como numa linha de montagem.</div>
@@ -2183,15 +2385,15 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
 </section>
 
 <!-- ================= HAZARDS ================= -->
-<section class="topic" id="hazards">
-  <span class="kicker">Tópico 13 · parte 3</span>
+<section class="topic" id="hazards" style="--acc:#c2364e">
+  <span class="kicker">Tópico 16</span>
   <h2>Quando o pipeline precisa parar (hazards)</h2>
   <p class="src">Sem slides: Stallings, cap. 12</p>
   <div class="oneline"><b>A ideia:</b> um <b>hazard</b> ("perigo") é qualquer situação que obriga o pipeline a <b>parar e esperar</b>; essa parada se chama <b>bolha</b>. Existem três tipos: de <b>recurso</b>, de <b>dados</b> e de <b>controle</b>.</div>
   <div class="grid3">
     <div class="card"><span class="tag c">Recurso (ou estrutural)</span><p><b>Duas instruções querem a mesma peça ao mesmo tempo.</b> Na lavanderia: só existe uma máquina e dois cestos querem usá-la. Ex.: a memória só atende um pedido por vez, e uma instrução quer ler um dado enquanto outra quer ser buscada. Solução: <b>mais recursos</b> (mais portas de memória, mais ALUs).</p></div>
     <div class="card"><span class="tag h">Dados</span><p><b>Uma instrução precisa de um resultado que a anterior ainda não terminou.</b> Na lavanderia: você quer dobrar a roupa que ainda está na secadora. Se não esperar, o resultado sai errado.</p></div>
-    <div class="card"><span class="tag v">Controle (ou de desvio)</span><p><b>O pipeline apostou errado no caminho de um desvio</b> e buscou instruções que depois precisam ser jogadas fora (como no diagrama de tempo do Tópico 13).</p></div>
+    <div class="card"><span class="tag v">Controle (ou de desvio)</span><p><b>O pipeline apostou errado no caminho de um desvio</b> e buscou instruções que depois precisam ser jogadas fora (como no diagrama de tempo do Tópico 15).</p></div>
   </div>
   <h3>Os três tipos de hazard de dados</h3>
   <div class="tw"><table>
@@ -2206,7 +2408,9 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
   </div>
 
   <h3>Cinco jeitos de lidar com desvios</h3>
+  <div class="theory">
   <p class="prose">O desvio condicional é o grande problema do pipeline: até ele ser executado, ninguém sabe qual será a próxima instrução. O livro lista cinco estratégias:</p>
+  </div>
   <div class="grid2">
     <div class="card"><h4>1 · Múltiplos fluxos</h4><p>"Na dúvida, faça os dois." Duplica o começo do pipeline e busca <b>os dois caminhos</b> possíveis. Problemas: os dois fluxos disputam registradores e memória, e se aparecer outro desvio, precisa de mais fluxos. (IBM 370/168, IBM 3033)</p></div>
     <div class="card"><h4>2 · Busca antecipada do alvo</h4><p>Ao reconhecer um desvio, busca também a instrução <b>de destino</b> e guarda. Se o desvio acontecer, ela já está pronta. (IBM 360/91)</p></div>
@@ -2249,7 +2453,176 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
 
 
 <!-- ================= LISTAS ================= -->
-<section class="topic" id="listas">
+
+<!-- ================= E/S ================= -->
+<section class="topic" id="es" style="--acc:#0e8a8c">
+  <span class="kicker">Tópico 17</span>
+  <h2>Dispositivos de entrada e saída</h2>
+  <p class="src">Slides "Dispositivos de Entrada e Saída" (sem número de aula)</p>
+  <div class="oneline"><b>A ideia:</b> os periféricos são <b>lentos</b> e cada um funciona de um jeito, então ninguém liga um teclado direto no processador. No meio fica um <b>módulo de E/S</b> (a "interface" ou "controlador"). A grande pergunta do tópico é <b>quem cuida da transferência</b>: a UCP o tempo todo (<b>programada</b>), a UCP só quando é avisada (<b>por interrupção</b>) ou um ajudante dedicado (<b>DMA</b>).</div>
+
+  <div class="story"><div class="lbl">Pensa assim: o restaurante e o garçom</div>
+    <p style="margin:0">A cozinha (a UCP) é rápida. Os clientes (os periféricos) falam devagar, cada um de um jeito, e pedem quantidades diferentes. O <b>garçom</b> é o módulo de E/S: anota o pedido no idioma do cliente, guarda no bloquinho (o <b>buffer</b>) e entrega na cozinha num formato que ela entende. Sem garçom, a cozinheira teria que ir a cada mesa e esperar o cliente decidir.</p>
+  </div>
+
+  <h3>Por que precisamos de um módulo de E/S</h3>
+  <div class="grid2">
+    <div class="card c-blue"><h4>Entrada e saída</h4><p>Dispositivos de <b>entrada</b> levam programas e dados para dentro do sistema: teclado, mouse, scanner. Os de <b>saída</b> mostram os resultados ao usuário: monitor, impressora. Alguns fazem as duas coisas: HD, pen drive, placa de rede.</p></div>
+    <div class="card c-rose"><h4>Os problemas</h4><p>Os periféricos geram <b>quantidades diferentes</b> de dados, em <b>velocidades diferentes</b> e em <b>formatos diferentes</b>. E são <b>muito mais lentos</b> que a UCP e a memória. Por isso existe o <b>módulo de E/S</b>, com uma interface para a UCP e a memória (o barramento do sistema) e outra para um ou mais periféricos.</p></div>
+  </div>
+  <div class="illus">
+    <svg viewBox="0 0 960 300" role="img" aria-label="Módulo de E/S entre o barramento do sistema e os periféricos">
+      <g font-family="Bitter" font-size="14">
+        <rect x="20" y="20" width="920" height="30" rx="6" fill="#2b59c3"/><text x="480" y="40" text-anchor="middle" fill="#fff" font-weight="700">barramento do sistema · linhas de endereço, dados e controle</text>
+        <rect x="40" y="90" width="150" height="70" rx="10" fill="#e8f0ff" stroke="#2b59c3" stroke-width="2"/><text x="115" y="130" text-anchor="middle" fill="#2b59c3" font-weight="700">UCP</text>
+        <rect x="220" y="90" width="150" height="70" rx="10" fill="#fff8d6" stroke="#c99a12" stroke-width="2"/><text x="295" y="130" text-anchor="middle" fill="#8a6500" font-weight="700">Memória</text>
+        <path d="M115 50 L115 90 M295 50 L295 90" stroke="#2b59c3" stroke-width="4"/>
+        <rect x="430" y="80" width="330" height="110" rx="12" fill="#fdeaf0" stroke="#c2364e" stroke-width="2.5"/>
+        <text x="595" y="102" text-anchor="middle" fill="#c2364e" font-weight="700">Módulo de E/S</text>
+        <rect x="445" y="112" width="140" height="28" rx="5" fill="#fff" stroke="#c2364e"/><text x="515" y="131" text-anchor="middle" font-size="12" fill="#1f2430">reg. de dados (buffer)</text>
+        <rect x="445" y="146" width="140" height="28" rx="5" fill="#fff" stroke="#c2364e"/><text x="515" y="165" text-anchor="middle" font-size="12" fill="#1f2430">reg. de estado/controle</text>
+        <rect x="600" y="112" width="70" height="62" rx="5" fill="#fff" stroke="#c2364e"/><text x="635" y="140" text-anchor="middle" font-size="12" fill="#1f2430">lógica</text><text x="635" y="156" text-anchor="middle" font-size="12" fill="#1f2430">de E/S</text>
+        <rect x="684" y="112" width="66" height="62" rx="5" fill="#fff" stroke="#c2364e"/><text x="717" y="136" text-anchor="middle" font-size="11" fill="#1f2430">interface</text><text x="717" y="152" text-anchor="middle" font-size="11" fill="#1f2430">c/ periférico</text>
+        <path d="M520 50 L520 80 M600 50 L600 80 M680 50 L680 80" stroke="#2b59c3" stroke-width="4"/>
+        <path d="M700 190 L620 240 M717 190 L760 240 M735 190 L880 240" stroke="#c2364e" stroke-width="3"/>
+        <rect x="560" y="240" width="120" height="44" rx="8" fill="#e9f7ee" stroke="#2c8a57"/><text x="620" y="267" text-anchor="middle" fill="#2c8a57" font-weight="700">teclado</text>
+        <rect x="700" y="240" width="120" height="44" rx="8" fill="#e9f7ee" stroke="#2c8a57"/><text x="760" y="267" text-anchor="middle" fill="#2c8a57" font-weight="700">disco</text>
+        <rect x="830" y="240" width="110" height="44" rx="8" fill="#e9f7ee" stroke="#2c8a57"/><text x="885" y="267" text-anchor="middle" fill="#2c8a57" font-weight="700">vídeo</text>
+        <text x="200" y="230" fill="#5d6270" font-size="13">um módulo pode atender</text><text x="200" y="250" fill="#5d6270" font-size="13">um ou vários periféricos</text>
+      </g>
+    </svg>
+  </div>
+
+  <h3>O que o módulo de E/S faz</h3>
+  <div class="grid3">
+    <div class="card c-blue"><h4>Controle e temporização</h4><p>Coordena o tráfego entre a UCP, a memória e o periférico, cada um no seu ritmo.</p></div>
+    <div class="card c-violet"><h4>Comunicação com a UCP</h4><p>Recebe <b>comandos</b>, informa o <b>estado</b> (pronto? ocupado? erro?) e reconhece seu <b>endereço</b>.</p></div>
+    <div class="card c-teal"><h4>Comunicação com o dispositivo</h4><p>Envia comandos ao periférico e troca dados com ele, no formato dele.</p></div>
+    <div class="card c-amber"><h4>Bufferização</h4><p>Guarda os dados temporariamente para compensar a diferença de <b>velocidade</b> entre a UCP e o periférico.</p></div>
+    <div class="card c-rose"><h4>Detecção de erros</h4><p>Percebe falhas (papel acabou, setor danificado, erro de transmissão) e avisa a UCP.</p></div>
+  </div>
+  <div class="walk"><div class="lbl">Uma leitura, passo a passo</div>
+    <ol>
+      <li>A UCP pergunta ao módulo de E/S o <b>estado</b> do dispositivo.</li>
+      <li>O módulo responde com o estado.</li>
+      <li>Se o dispositivo estiver <b>pronto</b>, a UCP pede a transferência.</li>
+      <li>O módulo busca o dado no dispositivo.</li>
+      <li>O módulo entrega o dado à UCP.</li>
+    </ol>
+  </div>
+  <div class="grid2">
+    <div class="card c-violet"><h4>Comandos que a UCP manda</h4><p>Primeiro o <b>endereço</b>, que identifica o módulo (e o dispositivo, se o módulo tiver vários). Depois o <b>comando</b>:</p><ul style="margin:0;padding-left:1.1rem"><li><b>Controle</b>: o que fazer (ex.: mover a cabeça de leitura do disco).</li><li><b>Teste</b>: verificar o estado (está ligado? deu erro?).</li><li><b>Leitura/escrita</b>: transferir dados pelo buffer.</li></ul></div>
+    <div class="card c-teal"><h4>Decisões de projeto do módulo</h4><p>Ele pode <b>esconder</b> os detalhes do dispositivo da UCP (ela só manda "ler") ou <b>revelar</b> (a UCP comanda tudo); pode atender <b>um ou vários</b> dispositivos; e pode <b>controlar</b> o dispositivo sozinho ou deixar esse trabalho para a UCP.</p></div>
+  </div>
+
+  <h3>Como a UCP endereça a E/S: mapeada × isolada</h3>
+  <div class="illus">
+    <svg viewBox="0 0 960 260" role="img" aria-label="E/S mapeada em memória e E/S isolada">
+      <g font-family="Bitter" font-size="14" text-anchor="middle">
+        <text x="230" y="24" font-weight="700" fill="#2b59c3">E/S mapeada na memória</text>
+        <rect x="150" y="40" width="160" height="200" rx="6" fill="#fff8d6" stroke="#c99a12" stroke-width="2"/>
+        <rect x="150" y="100" width="160" height="60" fill="#fdeaf0" stroke="#c2364e" stroke-width="2"/><text x="230" y="135" fill="#c2364e" font-weight="700">E/S</text>
+        <text x="230" y="80" fill="#8a6500">memória</text><text x="230" y="205" fill="#8a6500">memória</text>
+        <text x="140" y="52" text-anchor="end" font-family="JetBrains Mono" font-size="11" fill="#5d6270">FFFFF</text><text x="140" y="240" text-anchor="end" font-family="JetBrains Mono" font-size="11" fill="#5d6270">00000</text>
+        <text x="230" y="256" font-size="12" fill="#5d6270">um espaço só, as mesmas instruções (MOV, LDA…)</text>
+        <line x1="480" y1="20" x2="480" y2="250" stroke="#ddd5c8" stroke-dasharray="5 5"/>
+        <text x="730" y="24" font-weight="700" fill="#c2364e">E/S isolada</text>
+        <rect x="560" y="40" width="150" height="200" rx="6" fill="#fff8d6" stroke="#c99a12" stroke-width="2"/><text x="635" y="145" fill="#8a6500" font-weight="700">memória</text><text x="635" y="165" font-size="12" fill="#5d6270">1M × 8 bits</text>
+        <rect x="760" y="120" width="150" height="80" rx="6" fill="#fdeaf0" stroke="#c2364e" stroke-width="2"/><text x="835" y="155" fill="#c2364e" font-weight="700">portas de E/S</text><text x="835" y="175" font-size="12" fill="#5d6270">64K × 8 bits</text>
+        <text x="730" y="256" font-size="12" fill="#5d6270">dois espaços; instruções especiais IN e OUT</text>
+      </g>
+    </svg>
+    <p class="cap">O exemplo do slide é o Intel 8086/8088, que tem 1 MB de memória e um espaço separado de 64K portas de E/S.</p>
+  </div>
+  <div class="grid2">
+    <div class="card c-blue"><h4>Mapeada na memória (memory-mapped)</h4><p>Dispositivos e memória <b>dividem o mesmo espaço de endereços</b>. Ler ou escrever num periférico é igual a ler ou escrever na memória, então <b>não há instruções especiais</b> de E/S: qualquer instrução de acesso à memória serve. O custo é "gastar" endereços com a E/S.</p></div>
+    <div class="card c-rose"><h4>Isolada (isolated I/O)</h4><p>Espaços de endereço <b>separados</b>: as <b>portas de E/S</b> ficam à parte. O barramento precisa de linhas para dizer se o endereço é de memória ou de E/S, e existem <b>instruções especiais</b>, um conjunto pequeno (<b>IN</b> e <b>OUT</b>).</p></div>
+  </div>
+
+  <h3>As três técnicas de E/S</h3>
+  <div class="bench" id="esb">
+    <header><span class="nm">Teste aqui · Quanto tempo a UCP perde com E/S?</span></header>
+    <div class="in">
+      <p class="howto">Experimente: escolha a técnica e clique em <b>Animar</b>. A faixa de cima mostra o que a UCP está fazendo a cada instante: <b style="color:#2c8a57">verde</b> = trabalhando no programa, <b style="color:#c2364e">vermelho</b> = presa com a E/S, <b style="color:#c99a12">amarelo</b> = atendendo uma interrupção. A tarefa é ler 4 dados de um periférico lento.</p>
+      <div class="row" id="esb-chips"><button class="chip on" type="button" data-t="prog">Programada</button><button class="chip" type="button" data-t="int">Por interrupção</button><button class="chip" type="button" data-t="dma">DMA</button><button type="button" class="pri" id="esb-go">▶ Animar</button></div>
+      <div class="svgwrap" id="esb-svg"></div>
+      <div class="out" id="esb-txt"></div>
+    </div>
+  </div>
+  <div class="grid3">
+    <div class="card c-rose"><h4>1 · E/S programada</h4><p>A <b>UCP controla tudo</b>: verifica o estado, manda os comandos e transfere os dados. Ela pede a operação, o módulo faz e liga <b>bits de estado</b>, e a UCP fica conferindo esses bits <b>periodicamente</b>: é o <b>polling</b> (interrogação). O módulo <b>não avisa</b> e <b>não interrompe</b> a UCP. Resultado: a UCP <b>perde tempo esperando</b>, um método <b>ineficiente</b>.</p></div>
+    <div class="card c-amber"><h4>2 · E/S por interrupção</h4><p>A UCP manda o comando de leitura e <b>vai fazer outra coisa</b>. Quando o dado está pronto, o módulo <b>interrompe</b> a UCP. Ela então pede o dado e o módulo transfere. Acaba a espera, mas <b>cada dado ainda passa pela UCP</b>, com troca de contexto a cada interrupção.</p></div>
+    <div class="card c-teal"><h4>3 · DMA (acesso direto à memória)</h4><p>Um <b>controlador de DMA</b>, hardware extra no barramento, "imita" a UCP e copia o <b>bloco inteiro</b> direto entre o periférico e a memória. A UCP só configura no início e recebe <b>uma interrupção no fim</b>. É o mais eficiente para grandes volumes.</p></div>
+  </div>
+
+  <h3>O que acontece numa interrupção</h3>
+  <div class="illus">
+    <svg viewBox="0 0 960 330" role="img" aria-label="Processamento de uma interrupção: parte de hardware e parte de software">
+      <defs><marker id="esa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1f2430"/></marker></defs>
+      <g font-family="Bitter" font-size="13">
+        <rect x="20" y="10" width="440" height="310" rx="10" fill="#e8f0ff"/><text x="240" y="34" text-anchor="middle" font-weight="700" fill="#2b59c3" font-size="15">HARDWARE faz sozinho</text>
+        <rect x="500" y="10" width="440" height="310" rx="10" fill="#e9f7ee"/><text x="720" y="34" text-anchor="middle" font-weight="700" fill="#2c8a57" font-size="15">SOFTWARE (rotina de tratamento)</text>
+        <g text-anchor="middle">
+        <rect x="60" y="50" width="360" height="40" rx="6" fill="#fff" stroke="#2b59c3"/><text x="240" y="75">1. o controlador do dispositivo gera a interrupção</text>
+        <rect x="60" y="110" width="360" height="40" rx="6" fill="#fff" stroke="#2b59c3"/><text x="240" y="135">2. a UCP termina a instrução que estava executando</text>
+        <rect x="60" y="170" width="360" height="40" rx="6" fill="#fff" stroke="#2b59c3"/><text x="240" y="195">3. a UCP sinaliza que recebeu a interrupção</text>
+        <rect x="60" y="230" width="360" height="56" rx="6" fill="#fff" stroke="#2b59c3"/><text x="240" y="253">4. salva o PC e carrega no PC o endereço</text><text x="240" y="273">da rotina de tratamento</text>
+        <rect x="540" y="50" width="360" height="40" rx="6" fill="#fff" stroke="#2c8a57"/><text x="720" y="75">5. salva o resto do estado (registradores)</text>
+        <rect x="540" y="110" width="360" height="40" rx="6" fill="#fff" stroke="#2c8a57"/><text x="720" y="135">6. atende a interrupção (ex.: pega o dado)</text>
+        <rect x="540" y="170" width="360" height="40" rx="6" fill="#fff" stroke="#2c8a57"/><text x="720" y="195">7. restaura o estado do processo</text>
+        <rect x="540" y="230" width="360" height="40" rx="6" fill="#fff" stroke="#2c8a57"/><text x="720" y="255">8. restaura o PC: o programa continua</text>
+        </g>
+        <path d="M240 90 L240 108 M240 150 L240 168 M240 210 L240 228 M720 90 L720 108 M720 150 L720 168 M720 210 L720 228" stroke="#1f2430" stroke-width="2" marker-end="url(#esa)"/>
+        <path d="M420 258 C 470 258, 480 70, 536 70" fill="none" stroke="#1f2430" stroke-width="2" marker-end="url(#esa)"/>
+      </g>
+    </svg>
+    <p class="cap">A UCP só verifica se há interrupção <b>no fim de cada instrução</b>, por isso ela sempre termina a instrução atual antes de atender.</p>
+  </div>
+  <div class="grid2">
+    <div class="card c-violet"><h4>Quem me interrompeu?</h4><ul style="margin:0;padding-left:1.1rem">
+      <li><b>Uma linha para cada módulo</b>: simples, mas limita o número de dispositivos (o barramento tem poucas linhas).</li>
+      <li><b>Identificação por software</b>: uma linha só, e a UCP <b>pergunta a cada módulo</b> se foi ele. É <b>lenta</b>.</li>
+      <li><b>Arbitragem do barramento</b>: o módulo primeiro ganha o controle do barramento e depois interrompe; a UCP reconhece e o módulo coloca o <b>vetor de interrupção</b> nas linhas de dados (usado no PCI e no SCSI).</li></ul></div>
+    <div class="card c-amber"><h4>E se vierem várias ao mesmo tempo?</h4><p>Com várias linhas de interrupção, cada linha tem uma <b>prioridade</b>. Uma interrupção de prioridade <b>maior</b> pode interromper o tratamento de uma de prioridade <b>menor</b>. Na arbitragem de barramento também se usa um esquema de prioridades.</p></div>
+  </div>
+
+  <h3>DMA em detalhe</h3>
+  <div class="walk"><div class="lbl">Como uma transferência por DMA acontece</div>
+    <ol>
+      <li>A UCP passa ao controlador de DMA: a <b>operação</b> (leitura ou escrita), o <b>endereço do dispositivo</b>, o <b>endereço inicial</b> na memória e a <b>quantidade</b> de dados.</li>
+      <li>A UCP <b>vai fazer outra tarefa</b>.</li>
+      <li>O controlador de DMA faz a transferência inteira, usando seus registradores (contador de dados, registrador de dados e registrador de endereço).</li>
+      <li>No fim, o controlador manda <b>uma interrupção</b> avisando que acabou.</li>
+    </ol>
+  </div>
+  <div class="grid2">
+    <div class="card c-teal"><h4>Roubo de ciclo</h4><p>Para usar o barramento, o DMA "rouba" <b>um ciclo</b> por vez: a UCP fica <b>suspensa</b> logo antes de precisar do barramento (antes de buscar instrução ou operando, ou de gravar na memória). É diferente de uma interrupção: <b>não há troca de contexto</b>. A UCP fica um pouco mais lenta, mas não precisa fazer a transferência ela mesma.</p></div>
+    <div class="card c-rose"><h4>Por que não basta interrupção?</h4><p>Na E/S programada e na por interrupção a UCP participa <b>ativamente</b>: a taxa de transferência fica <b>limitada</b> pela velocidade com que ela atende, e ela fica <b>ocupada</b> gerenciando os dados. O DMA tira esse trabalho dela.</p></div>
+  </div>
+  <div class="bench">
+    <header><span class="nm">Teste aqui · As três configurações de DMA</span></header>
+    <div class="in">
+      <p class="howto">Experimente: troque a configuração e veja por onde o dado passa (bolinha) e quantas vezes ele usa o barramento do sistema.</p>
+      <div class="row" id="dmac-chips"><button class="chip on" type="button" data-c="1">1 · DMA separado</button><button class="chip" type="button" data-c="2">2 · DMA integrado à E/S</button><button class="chip" type="button" data-c="3">3 · Barramento de E/S</button><button type="button" class="pri" id="dmac-go">▶ Animar</button></div>
+      <div class="svgwrap" id="dmac-svg"></div>
+      <div class="out" id="dmac-txt"></div>
+    </div>
+  </div>
+  <div class="decore"><div class="lbl">Pra prova</div><ul>
+    <li>Periféricos diferem em <b>quantidade</b>, <b>velocidade</b> e <b>formato</b> de dados e são <b>mais lentos</b> → precisam do <b>módulo de E/S</b>.</li>
+    <li>Funções do módulo: <b>controle e temporização</b>, comunicação com a <b>UCP</b>, comunicação com o <b>dispositivo</b>, <b>bufferização</b>, <b>detecção de erros</b>.</li>
+    <li><b>Mapeada</b>: mesmo espaço, sem instruções especiais. <b>Isolada</b>: portas separadas, instruções <b>IN/OUT</b>.</li>
+    <li><b>Programada</b> = polling, UCP espera. <b>Interrupção</b> = UCP é avisada, mas cada dado passa por ela. <b>DMA</b> = controlador copia o bloco e interrompe só no fim.</li>
+    <li>DMA usa <b>roubo de ciclo</b> (sem troca de contexto). Configurações: separado (barramento <b>2×</b>, UCP suspensa 2×), integrado (<b>1×</b>), barramento de E/S (<b>1×</b>).</li>
+  </ul></div>
+  <div class="trap"><div class="lbl">Cuidado na prova</div><ul>
+    <li>Na E/S programada o módulo <b>não interrompe</b> a UCP: quem pergunta é a UCP (polling).</li>
+    <li>Roubo de ciclo <b>não é</b> interrupção: a UCP só é suspensa por um ciclo de barramento, sem salvar contexto.</li>
+    <li>No DMA a UCP <b>ainda recebe uma interrupção</b>, mas só uma, no final do bloco.</li>
+  </ul></div>
+</section>
+
+<section class="topic" id="listas" style="--acc:#6c4bc4">
   <span class="kicker">Exercícios</span>
   <h2>As listas, resolvidas passo a passo</h2>
   <div class="oneline"><b>Como usar:</b> tente cada questão no papel primeiro. Depois clique para abrir a resolução. Ao lado de cada bloco está o tópico da página que explica o assunto.</div>
@@ -2266,7 +2639,7 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
   <details><summary>9. Pentium III com endereços de 36 bits: qual a capacidade máxima de endereçamento?</summary><p>2³⁶ = 2⁶ × 2³⁰ = <b>64 G endereços</b>. Com células de 1 byte, <b>64 GB</b>.</p></details>
   <details><summary>10. Qual foi a primeira linguagem de alto nível? Objetivo?</summary><p><b>FORTRAN</b> ("FORmula TRANslation", IBM, década de 1950, na 2ª geração): feita para <b>cálculos científicos e de engenharia</b>, escrevendo fórmulas matemáticas de forma próxima da notação usual.</p></details>
 
-  <h3>LE2 · Conversões e aritmética <span class="tag">ver Tópicos 3 e 4</span></h3>
+  <h3>LE2 · Conversões e aritmética <span class="tag">ver Tópicos 3, 4 e 5</span></h3>
   <div class="tw"><table>
     <tr><th colspan="2">Decimal → binário</th><th colspan="2">Binário → decimal</th><th colspan="2">Decimal → octal</th></tr>
     <tr><td class="m">329</td><td class="m">101001001</td><td class="m">11011101010</td><td class="m">1770</td><td class="m">177</td><td class="m">261</td></tr>
@@ -2283,7 +2656,9 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
     <tr><td class="m">1 001 110 010</td><td class="m">1162</td><td class="m">F50</td><td class="m">1111 0101 0000</td><td class="m">543</td><td class="m">1000011111</td></tr>
     <tr><td class="m">0 011 000 001</td><td class="m">301</td><td class="m">AC5</td><td class="m">1010 1100 0101</td><td class="m">128</td><td class="m">10000000</td></tr>
   </table></div>
+  <div class="theory">
   <p class="muted" style="font-size:.9rem">Para ver qualquer uma passo a passo, use os testes do Tópico 3.</p>
+  </div>
   <div class="tw"><table>
     <tr><th>Operação</th><th>Resultado</th><th>Conferindo em decimal</th></tr>
     <tr><td class="m">a) 1011101 + 11101</td><td class="m">1111010</td><td>93 + 29 = 122</td></tr>
@@ -2303,7 +2678,7 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
   </table></div>
   <details><summary>A soma de dois números binários é 101000 e a diferença é 1010. Quais são?</summary><p>101000 = 40 e 1010 = 10. Se x + y = 40 e x − y = 10, somando: 2x = 50 → x = 25, y = 15. Em binário: <b>11001</b> e <b>1111</b>.</p></details>
 
-  <h3>LE3 · Sinal-magnitude e complemento a 2 <span class="tag">ver Tópico 4</span></h3>
+  <h3>LE3 · Sinal-magnitude e complemento a 2 <span class="tag">ver Tópico 5</span></h3>
   <details><summary>1. Com k bits, quantos números não negativos em SM e em C2?</summary><p>Nos dois casos, de <b>0 até 2ᵏ⁻¹ − 1</b>, ou seja, <b>2ᵏ⁻¹</b> números não negativos. Diferença: em SM o zero tem duas representações (+0 e −0), e o −0 não conta como número a mais; em C2 o zero é único, e por isso sobra um negativo a mais (−2ᵏ⁻¹).</p></details>
   <details><summary>2. Em C2 com 8 bits: a − d, b − e, c − f (indique overflow)</summary>
     <p>Valores: a = 11100000 = −32 · b = 11001100 = −52 · c = 11101111 = −17 · d = 10001110 = −114 · e = 10111011 = −69 · f = 10000001 = −127.</p>
@@ -2331,7 +2706,7 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
       <li><b>B − D</b> = −30 → 1110110 + 1101100 = (1)<b>1100010</b>. Sem overflow.</li>
     </ul></details>
 
-  <h3>Lista de Memória e Cache <span class="tag">ver Tópicos 2 e 5</span></h3>
+  <h3>Lista de Memória e Cache <span class="tag">ver Tópicos 2 e 6</span></h3>
   <div class="story"><div class="lbl">Siglas da lista</div><p style="margin:0"><b>REM</b> = registrador de endereço de memória (= MAR; tamanho do barramento de endereços). <b>RDM</b> = registrador de dados da memória (= MBR). <b>BE</b> / <b>BD</b> = barramento de endereços / de dados. <b>CI</b> = contador de instrução (= PC). <b>RI</b> = registrador de instrução.</p></div>
   <details><summary>1. RDM de 32 bits, REM de 24 bits, cada acesso lê 2 células, BD = palavra.</summary>
     <ol>
@@ -2382,8 +2757,10 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
       <li><b>16 conjuntos</b> (64 linhas cada): 16 = 2⁴ → [ tag 23 | conjunto 4 | byte 5 ].</li>
     </ul></details>
 
-  <h3>Monteiro, cap. 5 · exercícios de cache <span class="tag">ver Tópico 5</span></h3>
+  <h3>Monteiro, cap. 5 · exercícios de cache <span class="tag">ver Tópico 6</span></h3>
+  <div class="theory">
   <p class="muted">Os enunciados estão resumidos; a numeração é a do livro.</p>
+  </div>
   <details><summary>1. Cache associativa por conjunto: 256 linhas em conjuntos de 2; MP com 4K blocos de 128 bytes. Formato do endereço.</summary><ol>
     <li>MP = 4K × 128 = 2¹² × 2⁷ = 2¹⁹ bytes → endereço de <b>19 bits</b>.</li><li>Byte: 128 = 2⁷ → <b>7 bits</b>. Conjuntos: 256 ÷ 2 = 128 = 2⁷ → <b>7 bits</b>.</li><li>Tag = 19 − 7 − 7 = <b>5 bits</b>. Formato: [ tag 5 | conjunto 7 | byte 7 ]. Cada linha da cache guarda 5 bits de tag + 128 bytes de dados.</li></ol></details>
   <details><summary>2. Quando uma cache por conjunto é igual a uma de mapeamento direto?</summary><p>Quando cada conjunto tem <b>1 linha só</b>: o bloco tem um único lugar possível. (No outro extremo, um conjunto só, com todas as linhas, é o associativo completo.)</p></details>
@@ -2417,7 +2794,7 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
     <li><b>15</b> (direto, tag 8 · linha 12 · byte 4): endereço de 24 bits → MP de 2²⁴ = <b>16 MB</b>; 2¹² = <b>4.096 linhas</b>; linha de 2⁴ = <b>16 bytes</b>; 2⁸ = <b>256 blocos por linha</b>.</li>
     <li><b>16</b> (conjunto de 4, tag 8 · conjunto 8 · byte 4): endereço de 20 bits → MP de 2²⁰ = <b>1 MB</b>; 2⁸ = <b>256 conjuntos</b>; × 4 = <b>1.024 linhas</b>; linha de <b>16 bytes</b>; 2⁸ = <b>256 blocos por conjunto</b>.</li></ul></details>
 
-  <h3>Monteiro, cap. 6 · exercícios de processador <span class="tag">ver Tópico 9</span></h3>
+  <h3>Monteiro, cap. 6 · exercícios de processador <span class="tag">ver Tópicos 9 e 10</span></h3>
   <details><summary>1 a 5. Funções da UCP, da UAL, da UC, o ACC e quem dá o ritmo</summary><ul>
     <li><b>UCP</b>: buscar a instrução, interpretar, buscar os dados, executar, guardar o resultado e recomeçar. Componentes: UAL, registradores/ACC (processamento); UC, decodificador, RI, CI, relógio (controle); REM e RDM (ligação com a memória).</li>
     <li><b>UAL</b>: operações aritméticas (somar, subtrair…) e lógicas (E, OU, NÃO, deslocamento), sempre com dois valores.</li>
@@ -2450,46 +2827,43 @@ b.hl-m{background:linear-gradient(transparent 55%,#fff1a8 55%)}
 </section>
 
 <!-- ================= REVISÃO ================= -->
-<section class="topic" id="revisao">
+<section class="topic" id="revisao" style="--acc:#2c8a57">
   <span class="kicker">Revisão</span>
   <h2>Resumo de uma página</h2>
-  <div class="grid2">
-    <div class="card"><h4>Números (T3, T4)</h4><ul style="margin:0;padding-left:1.1rem;font-size:.97rem">
-      <li>Base b → decimal: some dígito × bᵖᵒˢⁱᶜᵃᵒ</li><li>Decimal → base b: ÷b, restos de baixo para cima · fração: ×b, inteiros de cima para baixo</li>
-      <li>Octal = 3 bits, hexa = 4 bits, a partir da vírgula</li>
-      <li>C2: inverte e soma 1 · faixa −2ⁿ⁻¹ até 2ⁿ⁻¹−1</li>
-      <li>SM e C1: −(2ⁿ⁻¹−1) até 2ⁿ⁻¹−1, com dois zeros</li>
-      <li>Overflow: mesmos sinais → resultado com sinal oposto</li></ul></div>
-    <div class="card"><h4>Instruções (T8, T9)</h4><ul style="margin:0;padding-left:1.1rem;font-size:.97rem">
-      <li>R: opcode | rs | rt | rd | shamt | função (6 5 5 5 5 6)</li><li>I: opcode | rs | rt | constante 16 · J: opcode | endereço 26</li>
-      <li>A[i] está em base + 4·i</li><li>beq: PC + 4 + constante×4 · j: 4 bits do PC+4, 26 bits, 00</li>
-      <li>Opcodes: R 000000 · addi 001000 · lw 100011 · sw 101011 · beq 000100 · j 000010</li></ul></div>
-    <div class="card"><h4>Caminho de dados e controle (T10–T12)</h4><ul style="margin:0;padding-left:1.1rem;font-size:.97rem">
-      <li>MUX: RegDst, ALUSrc, MemToReg, Branch E Zero, Jump</li>
-      <li>Somadores fora da ALU: PC + 4 e alvo do beq</li><li>beq compara subtraindo e olhando o Zero</li>
-      <li>lw/sw usam a ALU para calcular o endereço</li><li>Controle ← opcode · Controle da ALU ← OpALU + função</li></ul></div>
-    <div class="card"><h4>Pipeline (Cap. 12)</h4><ul style="margin:0;padding-left:1.1rem;font-size:.97rem">
-      <li>τ = max τᵢ + d</li><li>T = [k + n − 1]·τ · S = nk/(k + n − 1) → k</li>
-      <li>Hazards: recurso, dados (RAW, WAR, WAW), controle</li>
-      <li>Desvios: fluxos, alvo, buffer de laço, previsão, atrasado</li>
-      <li>1 bit erra 2× por laço; 2 bits erra 1×</li></ul></div>
+  <div class="oneline"><b>Como usar:</b> leia na véspera da prova. Cada cartão é um tópico; as partes <b>marcadas</b> são o que vale decorar. Clique no título do cartão para voltar à explicação completa.</div>
+  <div class="formulas">
+    <div class="f-h">As contas que mais caem</div>
+    <div class="f-grid">
+      <div><span>Capacidade da memória</span><code>2<sup>E</sup> × M bits</code></div>
+      <div><span>Faixa do C2 com n bits</span><code>−2<sup>n−1</sup> … 2<sup>n−1</sup>−1</code></div>
+      <div><span>Endereço na cache (direto)</span><code>tag | linha | byte</code></div>
+      <div><span>Tempo do pipeline</span><code>T = (k+n−1)·τ</code></div>
+      <div><span>Aceleração do pipeline</span><code>S = nk/(k+n−1)</code></div>
+      <div><span>Alvo do beq</span><code>PC+4 + const×4</code></div>
+    </div>
   </div>
+  <div class="mg-h">Prova 1</div>
+  <div class="rs-grid"><div class="rs" style="--acc:#2b59c3"><a class="rs-h" href="#intro"><span class="mn">1</span>Introdução e história</a><ul><li><b>Arquitetura</b> = O QUE faz (visível ao programador: instruções, modos, tamanho da palavra)</li><li><b>Organização</b> = COMO faz (sinais de controle, clock, tecnologia)</li><li><b>Von Neumann</b>: programa <b>armazenado</b> na memória, memória <b>única</b> para dados e instruções, execução <b>sequencial</b> → gargalo</li><li>Gerações: <b>válvula</b> → <b>transistor</b> → <b>circuito integrado</b> → VLSI</li></ul></div><div class="rs" style="--acc:#0e8a8c"><a class="rs-h" href="#sistema"><span class="mn">2</span>Memória e barramentos</a><ul><li>Capacidade = <b>2<sup>E</sup> células × M bits</b></li><li>Barramentos: <b>dados</b>, <b>endereços</b> (L fios → 2<sup>L</sup> endereços) e <b>controle</b></li><li>Hierarquia: <b>registradores → cache → MP → disco</b> (mais perto = mais rápido, menor, mais caro)</li><li>RAM é <b>volátil</b>; ROM não</li></ul></div><div class="rs" style="--acc:#6c4bc4"><a class="rs-h" href="#bases"><span class="mn">3</span>Bases numéricas</a><ul><li>Base b → decimal: <b>dígito × b<sup>posição</sup></b> e soma</li><li>Decimal → base b: <b>÷ b</b>, restos de <b>baixo para cima</b></li><li>Fração: <b>× b</b>, partes inteiras de <b>cima para baixo</b></li><li>Octal = <b>3 bits</b> · hexa = <b>4 bits</b>, agrupando a partir da vírgula</li></ul></div><div class="rs" style="--acc:#d9531e"><a class="rs-h" href="#aritmetica"><span class="mn">4</span>Contas em binário</a><ul><li>Soma: 1 + 1 = <b>10</b> (vai 1) · 1 + 1 + 1 = <b>11</b></li><li>Subtração: 0 − 1 pede <b>empréstimo</b> da coluna da esquerda</li><li>Multiplicação: <b>desloca e soma</b> · divisão: desloca e subtrai</li></ul></div><div class="rs" style="--acc:#c2364e"><a class="rs-h" href="#sinal"><span class="mn">5</span>Negativos e overflow</a><ul><li><b>SM</b>: bit de sinal + magnitude, <b>dois zeros</b>, faixa ±(2<sup>n−1</sup> − 1)</li><li><b>C1</b>: inverte todos os bits, também <b>dois zeros</b></li><li><b>C2</b>: <b>inverte e soma 1</b>, um zero só, faixa <b>−2<sup>n−1</sup> até 2<sup>n−1</sup> − 1</b></li><li><b>Overflow</b>: somar dois números de <b>mesmo sinal</b> e o resultado sair com <b>sinal oposto</b></li></ul></div></div>
+  <div class="mg-h">Prova 2</div>
+  <div class="rs-grid"><div class="rs" style="--acc:#2c8a57"><a class="rs-h" href="#cache"><span class="mn">6</span>Memória cache</a><ul><li>Funciona por <b>localidade</b>: <b>temporal</b> (reusar) e <b>espacial</b> (vizinhos)</li><li>Direto <b>[tag | linha | byte]</b> · associativo <b>[tag | byte]</b> · conjunto <b>[tag | conjunto | byte]</b></li><li>Substituição: <b>LRU</b>, <b>FIFO</b>, <b>LFU</b>, aleatório</li><li><b>Write through</b> grava na MP sempre · <b>write back</b> só quando o bloco sai (bit de alteração)</li></ul></div><div class="rs" style="--acc:#b0631a"><a class="rs-h" href="#programa"><span class="mn">7</span>Do programa ao executável</a><ul><li><b>Compilador → montador → ligador</b> (+ bibliotecas) → executável → <b>carregador</b></li><li>Modos: <b>imediato</b> (o valor), <b>direto</b> (o endereço), <b>por registrador</b>, <b>indireto</b> (2 acessos), <b>base + deslocamento</b></li><li>Instrução com <b>0 endereços</b> usa uma <b>pilha</b></li></ul></div><div class="rs" style="--acc:#2b59c3"><a class="rs-h" href="#instrucoes"><span class="mn">8</span>Instruções MIPS</a><ul><li><b>R</b>: op | rs | rt | rd | shamt | função (<b>6 5 5 5 5 6</b>)</li><li><b>I</b>: op | rs | rt | constante de <b>16</b> bits · <b>J</b>: op | endereço de <b>26</b></li><li><b>A[i]</b> fica em <b>base + 4·i</b> (inteiros de 4 bytes)</li><li><b>lw/sw</b> acessam a memória; o resto só usa registradores</li></ul></div><div class="rs" style="--acc:#0e8a8c"><a class="rs-h" href="#componentes"><span class="mn">9</span>Peças do processador</a><ul><li><b>Combinacional</b>: saída depende só da entrada · <b>sequencial</b>: tem memória (estado)</li><li>MUX com <b>2<sup>k</sup></b> entradas → <b>k</b> linhas de controle</li><li>Decodificador: <b>n</b> entradas → <b>2<sup>n</sup></b> saídas</li><li>Período do clock = <b>1 / frequência</b></li></ul></div><div class="rs" style="--acc:#6c4bc4"><a class="rs-h" href="#ucp-livro"><span class="mn">10</span>O processador do livro</a><ul><li>Registradores: <b>ACC</b>, <b>CI</b> (próxima instrução), <b>RI</b>, <b>REM</b> (endereço), <b>RDM</b> (dado)</li><li>Busca: <b>REM ← CI</b>, READ, <b>RDM ← M(REM)</b>, <b>RI ← RDM</b>, <b>CI ← CI + 1</b></li><li>A busca é igual para toda instrução; só a <b>execução</b> muda</li><li>UC <b>microprogramada</b> (CISC) × <b>por hardware</b> (RISC)</li></ul></div><div class="rs" style="--acc:#d9531e"><a class="rs-h" href="#formatos"><span class="mn">11</span>Formatos R, I e J</a><ul><li>Opcodes: R <b>000000</b> · addi <b>001000</b> · lw <b>100011</b> · sw <b>101011</b> · beq <b>000100</b> · j <b>000010</b></li><li>beq: alvo = <b>PC + 4 + constante × 4</b></li><li>j: <b>4 bits do PC+4 | 26 bits | 00</b></li></ul></div><div class="rs" style="--acc:#c2364e"><a class="rs-h" href="#datapath"><span class="mn">12</span>Caminho de dados</a><ul><li>MUX: <b>RegDst</b>, <b>ALUSrc</b>, <b>MemToReg</b>, <b>PCSrc</b> (Branch E Zero), <b>Jump</b></li><li>Somadores fora da ULA: <b>PC + 4</b> e <b>alvo do beq</b></li><li><b>lw/sw</b> usam a ULA para calcular o endereço</li><li><b>beq</b> compara <b>subtraindo</b> e olhando o sinal <b>Zero</b></li></ul></div><div class="rs" style="--acc:#2c8a57"><a class="rs-h" href="#controle"><span class="mn">13</span>Unidade de controle</a><ul><li>Controle principal ← <b>opcode</b> → liga/desliga os sinais</li><li>Controle da ULA ← <b>OpALU + função</b> → <b>4 bits</b> da operação</li><li>MemToReg = 1 só no <b>lw</b> · MemWrite = 1 só no <b>sw</b></li></ul></div><div class="rs" style="--acc:#a8790a"><a class="rs-h" href="#registradores"><span class="mn">14</span>Registradores e ciclo</a><ul><li>Visíveis ao programador × de <b>controle e estado</b> (PC, IR, MAR, MBR, <b>PSW</b> com as flags)</li><li>Ciclo: <b>busca → decodifica → busca operandos → executa → grava → checa interrupção</b></li></ul></div><div class="rs" style="--acc:#2b59c3"><a class="rs-h" href="#pipeline"><span class="mn">15</span>Pipeline</a><ul><li>Estágios do Stallings: <b>FI DI CO FO EI WO</b></li><li><b>τ = max τ<sub>i</sub> + d</b></li><li><b>T = (k + n − 1) · τ</b></li><li>Aceleração <b>S = n·k / (k + n − 1)</b> → tende a <b>k</b></li></ul></div><div class="rs" style="--acc:#c2364e"><a class="rs-h" href="#hazards"><span class="mn">16</span>Hazards e desvios</a><ul><li>Hazards: de <b>recurso</b>, de <b>dados</b> (RAW, WAR, WAW) e de <b>controle</b></li><li>Desvios: múltiplos fluxos, pré-busca do alvo, <b>buffer de laço</b>, <b>previsão</b>, <b>desvio atrasado</b></li><li>Previsão de <b>1 bit erra 2×</b> por laço · <b>2 bits erra 1×</b></li></ul></div><div class="rs" style="--acc:#0e8a8c"><a class="rs-h" href="#es"><span class="mn">17</span>Entrada e saída</a><ul><li>Módulo de E/S: <b>controle</b>, comunicação com <b>UCP</b> e <b>dispositivo</b>, <b>buffer</b>, <b>erros</b></li><li><b>Mapeada</b>: mesmo espaço da memória · <b>isolada</b>: portas + <b>IN/OUT</b></li><li><b>Programada</b> = polling · <b>interrupção</b> = aviso a cada dado · <b>DMA</b> = 1 interrupção por bloco</li><li><b>Roubo de ciclo</b>: sem troca de contexto · DMA separado <b>2×</b>, integrado <b>1×</b>, barramento de E/S <b>1×</b></li></ul></div></div>
   <h3>Flashcards</h3>
-  <p class="prose">Leia a pergunta, tente responder em voz alta e só então clique no cartão para ver a resposta.</p>
+  <p class="maptip">Leia a pergunta, tente responder em voz alta e só então clique no cartão para ver a resposta.</p>
   <div class="flash" id="flash"></div>
 </section>
 
 <!-- ================= QUIZ ================= -->
-<section class="topic" id="quiz">
+<section class="topic" id="quiz" style="--acc:#d9531e">
   <span class="kicker">Simulado</span>
   <h2>Simulado</h2>
+  <div class="theory">
   <p class="prose">30 questões no estilo das provas, misturando contas e teoria. Clique na alternativa: a certa fica verde, e aparece a explicação do porquê. A ordem das alternativas muda a cada vez que você zera o simulado.</p>
+  </div>
   <div class="score" id="q-score">0 / 0</div>
   <div id="q-list"></div>
   <div class="row" style="margin-top:12px"><button type="button" id="q-reset">Zerar e embaralhar</button></div>
 </section>
 
-<p class="muted" style="margin-top:60px;font-size:.88rem">Feito a partir dos slides dos tópicos 3, 4, 8, 9, 10, 11 e 12 de Fundamentos de Arquiteturas de Computadores e do capítulo 12 de Stallings, <i>Arquitetura e Organização de Computadores</i>.</p>
+<p class="muted" style="margin-top:60px;font-size:.88rem">Feito a partir dos slides das aulas de Fundamentos de Arquiteturas de Computadores e do capítulo 12 de Stallings, <i>Arquitetura e Organização de Computadores</i>.</p>
 </main>
 </div>
 <script>
@@ -3228,7 +3602,7 @@ anim:[["M75 260 L150 260 L225 260","1. BUSCA: o PC manda o endereço para a cach
  ["M620 230 L690 240 L735 260","5. EXECUTA: os dois valores entram na ULA, que soma: 17."],
  ["M760 260 L865 260 L865 400 L545 400 L545 290","6. ESCREVE: o resultado volta ao banco de registradores ($t0 = 17). (Num lw/sw, passaria pela cache de dados.)"],
  ["M75 235 L75 80 L180 95 L240 30 L40 30 L40 250","7. Ao mesmo tempo, PC + 4 já virou o novo PC: começa a próxima instrução."]],
-intro:"Camada 4: um núcleo por dentro, simplificado. São as peças dos tópicos 9 a 12. A versão completa, com todos os multiplexadores e fios, é o <a href=\"#datapath\">caminho de dados</a>."};
+intro:"Camada 4: um núcleo por dentro, simplificado. São as peças dos tópicos 9 a 13. A versão completa, com todos os multiplexadores e fios, é o <a href=\"#datapath\">caminho de dados</a>."};
 
 let tour={lv:1,run:null};
 function wTour(lv){tour.lv=lv;if(tour.run){tour.run.dead=true;cancelAnimationFrame(tour.run.raf);clearTimeout(tour.run.raf);tour.run=null}
@@ -3478,37 +3852,53 @@ $("bp-seq").addEventListener("input",()=>{bp.i=-1;wBp()});$("bp-step").addEventL
 document.querySelectorAll("[data-s]").forEach(b=>b.addEventListener("click",()=>{$("bp-seq").value=b.dataset.s;bp.i=-1;wBp()}));
 
 /* ---------- flashcards ---------- */
-const FC=[["T3","Regra para decimal → base b (inteiro)?","Divisões sucessivas por b; restos lidos de baixo para cima."],
-["T3","Regra para fração decimal → base b?","Multiplicações sucessivas por b; partes inteiras lidas de cima para baixo."],
-["T3","Quantos bits por dígito octal e hexa?","Octal 3, hexa 4 (8 = 2³, 16 = 2⁴)."],
-["T4","Faixa do C2 com n bits?","−2ⁿ⁻¹ até 2ⁿ⁻¹ − 1."],["T4","Como gerar −N em C2?","Inverte todos os bits de N e soma 1."],
-["T4","Duas vantagens do C2 sobre o SM?","Zero único e um só somador faz soma e subtração (custo menor, mais rápido)."],
-["T4","Quando há overflow em C2?","Parcelas com mesmo sinal e resultado com sinal oposto (ou: só um dos vai-uns, para o sinal ou do sinal, ocorre)."],
-["T8","Instrução com 0 endereços usa o quê?","Uma pilha (push, push, add, pop)."],["T8","Endereço de A[i] com inteiros de 4 bytes?","base + 4·i (A[8] → 32, A[12] → 48)."],
-["T9","Combinacional × sequencial?","Combinacional: saída só depende das entradas (ALU, MUX, somador). Sequencial: guarda estado entre ciclos (registrador)."],
-["T9","MUX com 2ᵏ entradas tem quantas linhas de controle?","k."],["T9","Por que a interface com a MP tem 2 bits de controle?","Para ter 3 opções: ler, escrever ou nenhum dos dois."],
-["T10","Por que PC + 4?","Memória endereçada em bytes e cada instrução tem 4 bytes (32 bits)."],
-["T11","Como o beq compara sem comparador?","A ALU subtrai; o bit Zero = 1 se os valores forem iguais."],
-["T11","Alvo do beq?","PC + 4 + imm × 4 (imm estendido e deslocado 2 à esquerda)."],
-["T12","Para que serve a porta E com Branch?","Impede que qualquer instrução com resultado zero na ALU mude o PC."],
-["T12","Quem gera os 4 bits da ALU?","O Controle da ALU, com OpALU0/OpALU1 + campo função (RI[5–0])."],
-["T12","MemToReg = 1 em qual instrução?","Só no lw."],
-["Cap12","Fórmula do tempo com pipeline?","T = [k + (n − 1)]·τ."],["Cap12","Aceleração máxima de um pipeline de k estágios?","k (quando n → ∞)."],
-["Cap12","3 tipos de hazard?","Recurso (estrutural), dados (RAW, WAR, WAW) e controle (desvio)."],
-["Cap12","5 formas de lidar com desvios?","Múltiplos fluxos, busca antecipada do alvo, buffer de laço, previsão de desvio, desvio atrasado."],
-["Cap12","4 registradores essenciais da execução?","PC, IR, MAR, MBR."],["Cap12","Interrupção × exceção?","Interrupção vem de sinal de hardware; exceção é gerada pela execução de uma instrução."],
-["T1","Arquitetura × organização?","Arquitetura (ISA): o que o processador faz, visível ao programador. Organização: como faz (implementação)."],
+const FC=[["T1","Arquitetura × organização?","Arquitetura (ISA): o que o processador faz, visível ao programador. Organização: como faz (implementação)."],
 ["T1","4 características de von Neumann?","Programa armazenado; dados e instruções na mesma memória em binário; memória, UC, ULA, E/S; execução sequencial busca/execução."],
 ["T2","E bits de endereço e M bits por célula: capacidade?","2ᴱ × M bits."],
 ["T2","Ordem da hierarquia de memória?","Registradores → cache → memória principal → memória secundária (mais lenta, maior e mais barata a cada degrau)."],
-["T5","Localidade temporal × espacial?","Temporal: o mesmo endereço de novo logo. Espacial: endereços vizinhos em seguida."],
-["T5","Formato do endereço nos 3 mapeamentos?","Direto [tag | linha | byte] · Associativo [tag | byte] · Conjunto [tag | conjunto | byte]."],
-["T5","4 algoritmos de substituição?","LRU, FIFO, LFU e aleatório."],
-["T6","Etapas para gerar um executável?","Compilador → montador → ligador (com bibliotecas) → executável → loader carrega na memória."]];
+["T3","Regra para decimal → base b (inteiro)?","Divisões sucessivas por b; restos lidos de baixo para cima."],
+["T3","Regra para fração decimal → base b?","Multiplicações sucessivas por b; partes inteiras lidas de cima para baixo."],
+["T3","Quantos bits por dígito octal e hexa?","Octal 3, hexa 4 (8 = 2³, 16 = 2⁴)."],
+["T5","Faixa do C2 com n bits?","−2ⁿ⁻¹ até 2ⁿ⁻¹ − 1."],
+["T5","Como gerar −N em C2?","Inverte todos os bits de N e soma 1."],
+["T5","Duas vantagens do C2 sobre o SM?","Zero único e um só somador faz soma e subtração (custo menor, mais rápido)."],
+["T5","Quando há overflow em C2?","Parcelas com mesmo sinal e resultado com sinal oposto (ou: só um dos vai-uns, para o sinal ou do sinal, ocorre)."],
+["T6","Localidade temporal × espacial?","Temporal: o mesmo endereço de novo logo. Espacial: endereços vizinhos em seguida."],
+["T6","Formato do endereço nos 3 mapeamentos?","Direto [tag | linha | byte] · Associativo [tag | byte] · Conjunto [tag | conjunto | byte]."],
+["T6","4 algoritmos de substituição?","LRU, FIFO, LFU e aleatório."],
+["T7","Etapas para gerar um executável?","Compilador → montador → ligador (com bibliotecas) → executável → loader carrega na memória."],
+["T8","Instrução com 0 endereços usa o quê?","Uma pilha (push, push, add, pop)."],
+["T8","Endereço de A[i] com inteiros de 4 bytes?","base + 4·i (A[8] → 32, A[12] → 48)."],
+["T9","Combinacional × sequencial?","Combinacional: saída só depende das entradas (ALU, MUX, somador). Sequencial: guarda estado entre ciclos (registrador)."],
+["T9","MUX com 2ᵏ entradas tem quantas linhas de controle?","k."],
+["T9","Por que a interface com a MP tem 2 bits de controle?","Para ter 3 opções: ler, escrever ou nenhum dos dois."],
+["T12","Por que PC + 4?","Memória endereçada em bytes e cada instrução tem 4 bytes (32 bits)."],
+["T12","Como o beq compara sem comparador?","A ALU subtrai; o bit Zero = 1 se os valores forem iguais."],
+["T12","Alvo do beq?","PC + 4 + imm × 4 (imm estendido e deslocado 2 à esquerda)."],
+["T13","Para que serve a porta E com Branch?","Impede que qualquer instrução com resultado zero na ALU mude o PC."],
+["T13","Quem gera os 4 bits da ALU?","O Controle da ALU, com OpALU0/OpALU1 + campo função (RI[5–0])."],
+["T13","MemToReg = 1 em qual instrução?","Só no lw."],
+["T14","4 registradores essenciais da execução?","PC, IR, MAR, MBR."],
+["T14","Interrupção × exceção?","Interrupção vem de sinal de hardware; exceção é gerada pela execução de uma instrução."],
+["T15","Fórmula do tempo com pipeline?","T = [k + (n − 1)]·τ."],
+["T15","Aceleração máxima de um pipeline de k estágios?","k (quando n → ∞)."],
+["T16","3 tipos de hazard?","Recurso (estrutural), dados (RAW, WAR, WAW) e controle (desvio)."],
+["T16","5 formas de lidar com desvios?","Múltiplos fluxos, busca antecipada do alvo, buffer de laço, previsão de desvio, desvio atrasado."],
+["T17","3 técnicas de E/S?","Programada (polling, UCP espera) · por interrupção (módulo avisa) · DMA (controlador copia o bloco e interrompe só no fim)."],
+["T17","5 funções do módulo de E/S?","Controle e temporização · comunicação com a UCP · comunicação com o dispositivo · bufferização · detecção de erros."],
+["T17","E/S mapeada × isolada?","Mapeada: mesmo espaço de endereços da memória, sem instruções especiais. Isolada: portas separadas, instruções IN/OUT."],
+["T17","O que é roubo de ciclo?","O DMA usa o barramento por um ciclo; a UCP fica suspensa sem troca de contexto."],
+["T17","Usos do barramento nas 3 configurações de DMA?","DMA separado: 2 (UCP suspensa 2×) · DMA integrado à E/S: 1 · barramento de E/S: 1."]];
 (function(){const f=$("flash");FC.forEach(([t,q,a])=>{const b=el("button",{type:"button"},`<span class="tp">${t}</span><span>${q}</span><span class="a">${a}</span>`);b.addEventListener("click",()=>b.classList.toggle("flip"));f.appendChild(b)})})();
 
 /* ---------- quiz ---------- */
 const QZ=[
+["Na E/S programada, como a UCP sabe que o dado está pronto?",["Ela fica consultando o estado do módulo (polling)","O módulo gera uma interrupção","O DMA avisa no fim do bloco","O sistema operacional manda um sinal"],0,"Na programada o módulo não interrompe: a UCP pergunta repetidamente."],
+["Qual técnica envolve UMA interrupção por bloco transferido?",["DMA","E/S programada","E/S por interrupção","E/S isolada"],0,"O DMA só interrompe a UCP quando termina o bloco inteiro."],
+["Na E/S mapeada em memória:",["Periféricos usam o mesmo espaço de endereços e as instruções normais de memória","Existem instruções especiais IN/OUT","Há linhas extras para escolher E/S","O DMA é obrigatório"],0,"IN/OUT e linhas de seleção extras são da E/S isolada."],
+["Quando a UCP verifica se há interrupção pendente?",["No fim de cada instrução","No meio da busca da instrução","Só quando o programa termina","A cada acesso à cache"],0,"Por isso ela sempre termina a instrução atual antes de atender."],
+["No roubo de ciclo do DMA, a UCP:",["É suspensa por um ciclo de barramento, sem troca de contexto","Salva todos os registradores","Executa a rotina de tratamento","Copia o dado para a memória"],0,"Diferente de uma interrupção: não há salvamento de contexto."],
+["Na configuração de barramento único com DMA separado, cada transferência usa o barramento do sistema:",["2 vezes","1 vez","3 vezes","nenhuma vez"],0,"E/S → DMA e DMA → memória, ambos pelo mesmo barramento."],
 ["(1011101)₂ em decimal vale:",["93","91","117","186"],0,"64 + 16 + 8 + 4 + 1 = 93."],
 ["0,375₁₀ em binário:",["0,011","0,101","0,0111","0,110"],0,"0,375×2 = 0,75 → 0; 0,75×2 = 1,5 → 1; 0,5×2 = 1,0 → 1. Lido de cima para baixo: 0,011."],
 ["(7A)₁₆ em octal:",["172","712","365","122"],0,"7A = 0111 1010 → regrupa de 3 em 3 pela direita: 001 111 010 = 172₈."],
@@ -3568,6 +3958,111 @@ $("q-reset").addEventListener("click",wQuiz);
 /* ---------- init ---------- */
 wPos();wDiv();wGrp();wFr();addCol=999;wAdd();addCol=addData().n;wAdd();wRep();wNeg();wOv();wAddr("3");simReset();wCyc();wClk();wMux();wSh();wSe();wDec("00");wEnc();
 dpBuild();dpDraw();wCtl();wAc();wJmp();wFl();wPP();wHz();wBp();wQuiz();
+
+/* ---------- E/S: técnicas ---------- */
+(function(){
+  const box=$("esb-svg");if(!box)return;
+  // segments: [type, duration] type: w=work (green), b=busy with I/O (red), i=interrupt handler (amber), d=device busy, s=DMA steal
+  const PLANS={
+    prog:{cpu:[["b",2],["b",3],["b",2],["b",3],["b",2],["b",3],["b",2],["b",3],["w",5]],dev:[["d",2,"lê 1"],["",3],["d",2,"lê 2"],["",3],["d",2,"lê 3"],["",3],["d",2,"lê 4"],["",3],["",5]],
+      txt:"<b>E/S programada.</b> A UCP pede o dado e fica perguntando \"já está pronto?\" (<b>polling</b>) até o dispositivo terminar. Depois copia o dado ela mesma. Ela só volta ao programa no fim: quase tudo é <span class='bad'>vermelho</span>."},
+    int:{cpu:[["b",1],["w",4],["i",1],["w",4],["i",1],["w",4],["i",1],["w",4],["i",1],["w",4]],dev:[["",1],["d",4,"lê 1"],["",1],["d",4,"lê 2"],["",1],["d",4,"lê 3"],["",1],["d",4,"lê 4"],["",1],["",4]],
+      txt:"<b>E/S por interrupção.</b> A UCP manda o comando e volta ao programa (<span class='ok'>verde</span>). Cada vez que um dado fica pronto, o módulo <b>interrompe</b> e a UCP para um pouco para buscá-lo (<span style='color:#c99a12;font-weight:800'>amarelo</span>). São <b>4 interrupções</b>, uma por dado."},
+    dma:{cpu:[["b",1],["w",4],["s",.3],["w",3.7],["s",.3],["w",3.7],["s",.3],["w",3.7],["s",.3],["w",3.4],["i",1],["w",1]],dev:[["",1],["d",4,"lê 1"],["d",4,"lê 2"],["d",4,"lê 3"],["d",4,"lê 4"],["",4]],
+      txt:"<b>DMA.</b> A UCP só configura o controlador de DMA (início) e volta ao programa. O DMA copia os dados direto para a memória, <b>roubando um ciclo</b> do barramento de vez em quando (riscos finos). No fim chega <b>uma única interrupção</b>. É o que deixa a UCP mais livre."}
+  };
+  const COL={w:"#2c8a57",b:"#c2364e",i:"#c99a12",s:"#6c4bc4",d:"#2b59c3","":"#f1eee8"};
+  let cur="prog",timer=null;
+  function draw(anim){
+    clearInterval(timer);box.innerHTML="";
+    const P=PLANS[cur],W=900,X0=150,scale=(W-X0-20)/26;
+    const s=sv("svg",{viewBox:`0 0 ${W} 190`,role:"img","aria-label":"linha do tempo da UCP e do dispositivo"});
+    s.appendChild(sv("text",{x:10,y:58,"font-size":16,"font-weight":700,fill:"#1f2430"},"UCP"));
+    s.appendChild(sv("text",{x:10,y:128,"font-size":16,"font-weight":700,fill:"#1f2430"},"Dispositivo"));
+    const rows=[[P.cpu,35],[P.dev,105]];const all=[];
+    rows.forEach(([segs,y])=>{let x=X0;segs.forEach(([t,d,lab])=>{const w=d*scale;const r=sv("rect",{x,y,width:Math.max(w-1,1.5),height:36,rx:3,fill:COL[t],opacity:anim?0:1});s.appendChild(r);all.push({r,x});
+      if(lab){const tx=sv("text",{x:x+w/2,y:y+23,"text-anchor":"middle","font-size":13,fill:"#fff","font-weight":700,opacity:anim?0:1},lab);s.appendChild(tx);all.push({r:tx,x})}x+=w})});
+    for(let k=0;k<=26;k+=2){s.appendChild(sv("text",{x:X0+k*scale,y:175,"text-anchor":"middle","font-size":11,fill:"#8a8f9c"},k))}
+    s.appendChild(sv("text",{x:X0-10,y:175,"text-anchor":"end","font-size":11,fill:"#8a8f9c"},"tempo →"));
+    box.appendChild(s);
+    const work=P.cpu.filter(a=>a[0]==="w").reduce((a,b)=>a+b[1],0),tot=P.cpu.reduce((a,b)=>a+b[1],0);
+    $("esb-txt").innerHTML=P.txt+`<br>UCP livre para o programa: <b>${Math.round(work/tot*100)}%</b> do tempo.`;
+    if(anim){const cursor=sv("line",{x1:X0,x2:X0,y1:25,y2:150,stroke:"#1f2430","stroke-width":2});s.appendChild(cursor);let t=0;
+      timer=setInterval(()=>{t+=.25;const cx=X0+t*scale;cursor.setAttribute("x1",cx);cursor.setAttribute("x2",cx);all.forEach(o=>{if(o.x<=cx)o.r.setAttribute("opacity",1)});if(t>=26){clearInterval(timer);cursor.remove()}},40)}
+  }
+  chips($("esb-chips"),"data-t",v=>{cur=v;draw(false)});
+  $("esb-go").addEventListener("click",()=>draw(true));
+  draw(false);
+})();
+
+/* ---------- E/S: configurações de DMA ---------- */
+(function(){
+  const box=$("dmac-svg");if(!box)return;
+  const CF={
+    1:{txt:"<b>Barramento único, DMA separado.</b> O dado sai do módulo de E/S, passa pelo barramento até o DMA, e o DMA passa de novo pelo barramento até a memória. São <b>2 usos do barramento</b> por transferência, e a UCP fica <b>suspensa 2 vezes</b>. É a configuração mais barata e a menos eficiente.",uses:2},
+    2:{txt:"<b>Barramento único, DMA integrado à E/S.</b> O DMA fica junto do módulo de E/S (fora do barramento do sistema). O dado vai do dispositivo ao DMA por fora e só usa o barramento <b>1 vez</b> para chegar à memória: UCP <b>suspensa 1 vez</b>.",uses:1},
+    3:{txt:"<b>Barramento de E/S separado.</b> Os módulos de E/S ficam num barramento só deles, ligado ao DMA. O barramento do sistema é usado <b>1 vez</b> (DMA → memória), UCP <b>suspensa 1 vez</b>, e fica fácil acrescentar novos dispositivos.",uses:1}
+  };
+  let cur="1",tm=[];
+  function box2(s,x,y,w,h,t,f,st){s.appendChild(sv("rect",{x,y,width:w,height:h,rx:8,fill:f,stroke:st,"stroke-width":2}));s.appendChild(sv("text",{x:x+w/2,y:y+h/2+5,"text-anchor":"middle","font-size":14,"font-weight":700,fill:st},t))}
+  function draw(anim){
+    tm.forEach(clearTimeout);tm=[];box.innerHTML="";
+    const s=sv("svg",{viewBox:"0 0 900 270",role:"img","aria-label":"configuração de DMA"});
+    const BUS="#2b59c3";
+    s.appendChild(sv("rect",{x:20,y:120,width:860,height:16,rx:4,fill:BUS}));
+    s.appendChild(sv("text",{x:450,y:155,"text-anchor":"middle","font-size":12,fill:BUS},"barramento do sistema"));
+    box2(s,40,30,120,60,"UCP","#e8f0ff",BUS);
+    box2(s,200,30,120,60,"Memória","#fff8d6","#8a6500");
+    [100,260].forEach(x=>s.appendChild(sv("rect",{x:x-3,y:90,width:6,height:30,fill:BUS})));
+    let path;
+    if(cur==="1"){
+      box2(s,380,30,120,60,"DMA","#efe9fd","#6c4bc4");
+      box2(s,560,30,120,60,"E/S","#fdeaf0","#c2364e");
+      box2(s,720,30,120,60,"E/S","#fdeaf0","#c2364e");
+      [440,620,780].forEach(x=>s.appendChild(sv("rect",{x:x-3,y:90,width:6,height:30,fill:BUS})));
+      path=[[620,60],[620,128],[440,128],[440,60],[440,128],[260,128],[260,60]];
+    }else if(cur==="2"){
+      [455,757].forEach(x=>s.appendChild(sv("rect",{x:x-3,y:136,width:6,height:34,fill:BUS})));
+      box2(s,400,170,110,60,"DMA","#efe9fd","#6c4bc4");
+      box2(s,550,160,90,40,"E/S","#fdeaf0","#c2364e");box2(s,550,215,90,40,"E/S","#fdeaf0","#c2364e");
+      s.appendChild(sv("path",{d:"M510 190 L550 180 M510 210 L550 235",stroke:"#c2364e","stroke-width":3,fill:"none"}));
+      box2(s,710,170,95,60,"DMA","#efe9fd","#6c4bc4");box2(s,815,180,65,40,"E/S","#fdeaf0","#c2364e");
+      s.appendChild(sv("path",{d:"M805 200 L815 200",stroke:"#c2364e","stroke-width":3}));
+      s.appendChild(sv("text",{x:470,y:262,"text-anchor":"middle","font-size":12,fill:"#6c4bc4"},"E/S ligada direto ao DMA, por fora do barramento"));
+      path=[[595,180],[510,190],[455,190],[455,128],[260,128],[260,60]];
+    }else{
+      box2(s,420,30,120,60,"DMA","#efe9fd","#6c4bc4");
+      s.appendChild(sv("rect",{x:477,y:90,width:6,height:30,fill:BUS}));
+      s.appendChild(sv("rect",{x:560,y:40,width:12,height:200,rx:3,fill:"#c2364e"}));
+      s.appendChild(sv("text",{x:585,y:255,"font-size":12,fill:"#c2364e"},"barramento de E/S"));
+      s.appendChild(sv("path",{d:"M540 60 L560 60",stroke:"#c2364e","stroke-width":4}));
+      box2(s,620,20,110,46,"E/S","#fdeaf0","#c2364e");box2(s,620,90,110,46,"E/S","#fdeaf0","#c2364e");box2(s,620,170,110,46,"E/S","#fdeaf0","#c2364e");
+      s.appendChild(sv("path",{d:"M572 43 L620 43 M572 113 L620 113 M572 193 L620 193",stroke:"#c2364e","stroke-width":4}));
+      s.appendChild(sv("rect",{x:20,y:120,width:470,height:16,rx:4,fill:BUS}));
+      s.appendChild(sv("rect",{x:490,y:118,width:70,height:20,fill:"#fbfaf7"}));
+      path=[[675,193],[566,193],[566,60],[480,60],[480,128],[260,128],[260,60]];
+    }
+    box.appendChild(s);
+    const c=CF[cur];
+    $("dmac-txt").innerHTML=c.txt+`<div style="margin-top:6px">Usos do barramento do sistema por transferência: <b style="font-size:1.2em;color:#2b59c3">${c.uses}</b> · vezes que a UCP fica suspensa: <b style="font-size:1.2em;color:#c2364e">${c.uses}</b></div>`;
+    if(anim){const dot=sv("circle",{r:9,fill:"#e0a100",stroke:"#1f2430","stroke-width":2,cx:path[0][0],cy:path[0][1]});s.appendChild(dot);
+      let i=0;const step=()=>{if(i>=path.length-1)return;const [a,b]=[path[i],path[i+1]];const n=18;for(let k=1;k<=n;k++)tm.push(setTimeout(()=>{dot.setAttribute("cx",a[0]+(b[0]-a[0])*k/n);dot.setAttribute("cy",a[1]+(b[1]-a[1])*k/n)},k*22));i++;tm.push(setTimeout(step,n*22+40))};step()}
+  }
+  chips($("dmac-chips"),"data-c",v=>{cur=v;draw(false)});
+  $("dmac-go").addEventListener("click",()=>draw(true));
+  draw(false);
+})();
+
+
+/* ---------- celular: SVG largo vira rolagem horizontal, para o texto não ficar minúsculo ---------- */
+(function(){const mq=matchMedia("(max-width:700px)");
+  function fit(){document.querySelectorAll("main .illus svg, main .svgwrap svg").forEach(g=>{const vb=g.viewBox&&g.viewBox.baseVal;const w=vb&&vb.width;
+    if(!mq.matches||!w){g.style.minWidth="";g.parentElement.classList.remove("scrollhint");return}
+    const need=Math.round(w*0.72);const box=g.parentElement.clientWidth;
+    if(need>box+8){g.style.minWidth=need+"px";g.parentElement.classList.add("scrollhint")}else{g.style.minWidth="";g.parentElement.classList.remove("scrollhint")}})}
+  let t;const later=()=>{clearTimeout(t);t=setTimeout(fit,60)};
+  try{new MutationObserver(later).observe(document.querySelector("main"),{childList:true,subtree:true})}catch(e){}
+  mq.addEventListener?mq.addEventListener("change",fit):0;addEventListener("resize",later);fit()})();
 </script>
 </body>
 </html>
