@@ -414,8 +414,27 @@ nav.side a.on{border-left:4px solid var(--acc,#2b59c3)!important;color:var(--acc
 .byline{margin:.4rem 0 0;font-family:var(--f-hand);font-size:1.5rem;color:var(--acc-dark)}
 .byline b{font-weight:700;color:var(--acc)}
 </style>
+<style>
+/* ===== Barra lateral recolhível ===== */
+.wrap{transition:grid-template-columns .25s ease}
+.side-toggle{position:fixed;top:14px;left:228px;z-index:50;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:1rem;line-height:1;cursor:pointer;box-shadow:0 2px 8px #0000001a;display:flex;align-items:center;justify-content:center;transition:left .25s ease,transform .25s ease}
+.side-toggle:hover,.side-toggle:focus-visible{background:#f4f1ea}
+nav.side{padding-top:52px}
+body.nav-off .wrap{grid-template-columns:0 minmax(0,1fr)!important}
+body.nav-off nav.side{visibility:hidden;overflow:hidden;padding:0;border:none}
+body.nav-off .side-toggle{left:14px;transform:rotate(180deg)}
+@media (max-width:860px){
+  .side-toggle{top:6px;left:auto;right:8px;width:30px;height:30px}
+  nav.side{padding-top:8px;padding-right:46px}
+  body.nav-off .side-toggle{left:auto;transform:rotate(-90deg)}
+  body.nav-off nav.side{display:none}
+  body.nav-off .wrap{grid-template-columns:minmax(0,1fr)!important}
+}
+@media print{.side-toggle{display:none}}
+</style>
 </head>
 <body>
+<button type="button" class="side-toggle" id="sideToggle" aria-controls="navlist" aria-expanded="true" title="Recolher menu" aria-label="Recolher menu">&#10094;</button>
 <div class="wrap">
 <nav class="side" aria-label="Tópicos">
   <div class="brand">Arquitetura de Computadores</div>
@@ -4066,6 +4085,21 @@ dpBuild();dpDraw();wCtl();wAc();wJmp();wFl();wPP();wHz();wBp();wQuiz();
   let t;const later=()=>{clearTimeout(t);t=setTimeout(fit,60)};
   try{new MutationObserver(later).observe(document.querySelector("main"),{childList:true,subtree:true})}catch(e){}
   mq.addEventListener?mq.addEventListener("change",fit):0;addEventListener("resize",later);fit()})();
+</script>
+<script>
+(function(){
+  var b=document.getElementById('sideToggle'),k='ac-nav-off';
+  function set(off){
+    document.body.classList.toggle('nav-off',off);
+    b.setAttribute('aria-expanded',String(!off));
+    var t=off?'Mostrar menu':'Recolher menu';
+    b.title=t;b.setAttribute('aria-label',t);
+    try{localStorage.setItem(k,off?'1':'0')}catch(e){}
+  }
+  var saved=null;try{saved=localStorage.getItem(k)}catch(e){}
+  set(saved==='1');
+  b.addEventListener('click',function(){set(!document.body.classList.contains('nav-off'))});
+})();
 </script>
 </body>
 </html>
